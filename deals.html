@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OffPrice.me – Deals & Offers Across GCC | UAE, KSA, Kuwait, Qatar, Bahrain, Oman</title>
+<meta name="description" content="Discover the latest deals and offers from popular brands across GCC — UAE, Saudi Arabia, Kuwait, Qatar, Bahrain, Oman and Egypt. Updated regularly.">
+<meta name="keywords" content="GCC deals, Middle East offers, UAE discount, KSA deals, Kuwait offers, Qatar discounts, Noon deals, Talabat offers, Amazon GCC">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="OffPrice.me – GCC Deals & Offers Hub">
+<meta property="og:description" content="Browse deals for UAE, KSA, Kuwait, Qatar, Bahrain & Oman.">
+<meta property="og:url" content="https://offprice.me">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://offprice.me/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"OffPrice.me","url":"https://offprice.me","description":"Deals and offers for GCC countries"}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#09090F;--surf:#111119;--card:#15151F;--bdr:rgba(255,255,255,0.08);--red:#E53E3E;--redl:#FC6161;--gold:#F0C040;--goldd:#C9952A;--teal:#00C5C5;--grn:#38B27A;--org:#FF8C42;--txt:#F0F0F8;--dim:#888AA8;--mut:#3E3E5A;--r:12px;--rs:7px;--sh:0 8px 32px rgba(0,0,0,.5)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--txt);line-height:1.6;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 20% 10%,rgba(229,62,62,.05) 0%,transparent 55%),radial-gradient(ellipse at 80% 90%,rgba(0,197,197,.04) 0%,transparent 50%);pointer-events:none;z-index:0}
+.z1{position:relative;z-index:1}
+/* NAV */
+nav{background:rgba(9,9,15,.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--bdr);position:sticky;top:0;z-index:200;padding:0 20px}
+.nav-i{max-width:1320px;margin:0 auto;height:60px;display:flex;align-items:center;gap:14px}
+.logo{font-family:'Syne',sans-serif;font-size:1.4rem;color:var(--txt);text-decoration:none;flex-shrink:0}
+.logo b{color:var(--red)}.logo span{color:var(--dim);font-weight:700;font-size:.85rem}
+.srch{flex:1;max-width:480px;position:relative}
+.srch input{width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.1);border-radius:50px;padding:8px 80px 8px 16px;color:var(--txt);font:500 .87rem 'Outfit',sans-serif;outline:none;transition:border-color .2s}
+.srch input:focus{border-color:var(--red)}
+.srch input::placeholder{color:var(--dim)}
+.srch button{position:absolute;right:4px;top:50%;transform:translateY(-50%);background:var(--red);border:none;border-radius:50px;padding:6px 14px;color:#fff;font:600 .76rem 'Outfit',sans-serif;cursor:pointer}
+.nav-r{display:flex;align-items:center;gap:6px;margin-left:auto;flex-shrink:0}
+.nl{color:var(--dim);text-decoration:none;font-size:.8rem;font-weight:500;padding:5px 9px;border-radius:6px;transition:all .2s;white-space:nowrap}
+.nl:hover{color:var(--gold);background:rgba(240,192,64,.08)}
+.nl.adm{background:var(--surf);border:1px solid var(--bdr)}
+.nl.adm:hover{border-color:var(--gold);color:var(--gold)}
+/* ADS */
+.adw{max-width:1320px;margin:0 auto;padding:14px 20px 0}
+.ads{background:rgba(255,255,255,.025);border:1px dashed rgba(255,255,255,.1);border-radius:var(--rs);display:flex;align-items:center;justify-content:center;color:var(--mut);font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:1px}
+.adlb{height:90px;width:100%}
+.adrect{width:300px;height:250px;flex-shrink:0}
+.adil{width:100%;height:90px;margin:18px 0}
+/* HERO */
+.hero{max-width:1320px;margin:0 auto;padding:32px 20px 14px;text-align:center}
+.pill{display:inline-flex;align-items:center;gap:6px;background:rgba(229,62,62,.12);border:1px solid rgba(229,62,62,.25);border-radius:50px;padding:4px 13px;font-size:.72rem;color:var(--redl);font-weight:600;text-transform:uppercase;letter-spacing:.6px;margin-bottom:10px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--grn);animation:blink 1.8s ease infinite}
+@keyframes blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.5)}}
+.hero h1{font-family:'Syne',sans-serif;font-size:clamp(1.65rem,3.2vw,2.7rem);line-height:1.15;margin-bottom:8px}
+.hero h1 em{color:var(--red);font-style:normal}
+.hero p{color:var(--dim);font-size:.9rem;max-width:520px;margin:0 auto 6px}
+.disc-note{font-size:.71rem;color:var(--mut);margin-bottom:18px;background:rgba(240,192,64,.07);border:1px solid rgba(240,192,64,.15);border-radius:6px;padding:6px 14px;display:inline-block}
+.hstats{display:flex;justify-content:center;gap:28px;flex-wrap:wrap}
+.stn{font-family:'Syne',sans-serif;font-size:1.45rem;color:var(--gold)}
+.stl{font-size:.68rem;color:var(--dim);text-transform:uppercase;letter-spacing:.4px}
+/* TABS */
+.tbar{max-width:1320px;margin:12px auto 0;padding:0 20px}
+.tabs{display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.tabs::-webkit-scrollbar{display:none}
+.ctab{display:flex;align-items:center;gap:5px;background:var(--surf);border:1px solid var(--bdr);border-radius:50px;padding:6px 15px;font:600 .8rem 'Outfit',sans-serif;color:var(--dim);cursor:pointer;transition:all .2s;white-space:nowrap;flex-shrink:0}
+.ctab:hover{border-color:var(--red);color:var(--redl)}
+.ctab.act{background:var(--red);border-color:var(--red);color:#fff}
+.ctab .cn{background:rgba(255,255,255,.2);border-radius:50px;padding:1px 6px;font-size:.66rem}
+.catbar{max-width:1320px;margin:7px auto 0;padding:0 20px}
+.cats{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.cats::-webkit-scrollbar{display:none}
+.cat{background:transparent;border:1px solid var(--bdr);border-radius:7px;padding:5px 11px;font:500 .77rem 'Outfit',sans-serif;color:var(--dim);cursor:pointer;transition:all .15s;white-space:nowrap}
+.cat:hover{border-color:var(--gold);color:var(--gold)}
+.cat.act{background:rgba(240,192,64,.12);border-color:var(--gold);color:var(--gold)}
+/* LAYOUT */
+.main{max-width:1320px;margin:16px auto;padding:0 20px 60px;display:grid;grid-template-columns:1fr 300px;gap:22px;align-items:start}
+.drh{display:flex;align-items:center;justify-content:space-between;margin-bottom:13px}
+.drh h2{font-family:'Syne',sans-serif;font-size:1.15rem}
+.drh span{font-size:.78rem;color:var(--dim)}
+.nores{text-align:center;padding:50px 20px;color:var(--dim)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(265px,1fr));gap:13px}
+/* CARD */
+.card{background:var(--card);border:1px solid var(--bdr);border-radius:var(--r);display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s,border-color .25s;overflow:hidden;animation:cardUp .4s ease both}
+.card:hover{transform:translateY(-3px);box-shadow:var(--sh);border-color:rgba(229,62,62,.3)}
+@keyframes cardUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+/* STATUS STRIP — FULL WIDTH TOP, NO OVERLAP */
+.strip{padding:5px 12px;font-size:.63rem;font-weight:700;letter-spacing:.7px;text-transform:uppercase;display:flex;align-items:center;gap:5px}
+.strip.hot{background:rgba(229,62,62,.15);color:#FC8B8B;border-bottom:1px solid rgba(229,62,62,.15)}
+.strip.new{background:rgba(0,197,197,.1);color:var(--teal);border-bottom:1px solid rgba(0,197,197,.12)}
+.strip.off{background:rgba(240,192,64,.1);color:var(--gold);border-bottom:1px solid rgba(240,192,64,.12)}
+.strip.none{display:none}
+/* HEADER — brand + info + discount badge, all in one row */
+.ch{padding:12px 13px 0;display:flex;align-items:flex-start;gap:9px}
+.bicon{width:40px;height:40px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:800;flex-shrink:0}
+.ci{flex:1;min-width:0}
+.bn{font-weight:700;font-size:.88rem;color:var(--txt)}
+.cr{display:flex;align-items:center;gap:4px;margin-top:2px;flex-wrap:wrap}
+.cb{font-size:.64rem;color:var(--dim);font-weight:500;text-transform:uppercase}
+.cbadge{display:inline-flex;align-items:center;gap:2px;font-size:.63rem;background:rgba(255,255,255,.06);border-radius:4px;padding:1px 4px;color:var(--dim)}
+/* Discount badge — rightmost, aligned to top */
+.db{flex-shrink:0;background:rgba(229,62,62,.12);border:1px solid rgba(229,62,62,.22);color:#FC8B8B;font-size:.77rem;font-weight:700;padding:3px 8px;border-radius:6px;align-self:flex-start;margin-top:1px;white-space:nowrap}
+.cbody{padding:9px 13px;flex:1}
+.ct{font-weight:600;font-size:.84rem;color:var(--txt);margin-bottom:4px;line-height:1.4}
+.cd{font-size:.75rem;color:var(--dim);line-height:1.5}
+/* CODE AREA */
+.ccode{padding:9px 13px;margin-top:auto}
+.clbl{font-size:.65rem;color:var(--dim);text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px;font-weight:600}
+.mrow{display:flex;align-items:stretch;background:rgba(240,192,64,.06);border:1.5px dashed rgba(240,192,64,.25);border-radius:var(--rs);overflow:hidden}
+.mtxt{flex:1;padding:8px 10px;font:700 .95rem 'Courier New',monospace;color:rgba(240,192,64,.4);letter-spacing:4px;user-select:none}
+.rbtn{background:var(--goldd);border:none;padding:8px 11px;cursor:pointer;font:700 .7rem 'Outfit',sans-serif;color:#000;transition:background .15s;white-space:nowrap}
+.rbtn:hover{background:var(--gold)}
+.lbtn{display:block;width:100%;text-align:center;background:rgba(229,62,62,.09);border:1px solid rgba(229,62,62,.22);border-radius:var(--rs);padding:8px;color:var(--redl);font:600 .77rem 'Outfit',sans-serif;cursor:pointer;text-decoration:none;transition:all .2s}
+.lbtn:hover{background:rgba(229,62,62,.18)}
+.cfoot{padding:7px 13px 11px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(255,255,255,.04)}
+.exp{font-size:.69rem;color:var(--dim)}
+.exp.soon{color:var(--org)}
+.ttag{font-size:.66rem;font-weight:600;background:rgba(56,178,122,.1);color:var(--grn);padding:2px 6px;border-radius:50px}
+/* FEATURED */
+.feat{background:linear-gradient(135deg,#1A0A14,#0F111E);border:1px solid rgba(229,62,62,.35);border-radius:var(--r);padding:18px;display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;margin-bottom:18px;position:relative;overflow:hidden}
+.feat::after{content:'';position:absolute;right:-20px;top:-30px;width:140px;height:140px;background:radial-gradient(circle,rgba(229,62,62,.1) 0%,transparent 70%);pointer-events:none}
+.ftag{display:inline-flex;align-items:center;gap:4px;background:rgba(229,62,62,.14);border:1px solid rgba(229,62,62,.28);border-radius:50px;padding:3px 9px;font:700 .67rem 'Outfit',sans-serif;color:var(--redl);text-transform:uppercase;letter-spacing:.5px;margin-bottom:7px}
+.ftitle{font-family:'Syne',sans-serif;font-size:1.05rem;color:var(--txt);margin-bottom:4px}
+.fdesc{font-size:.79rem;color:var(--dim);margin-bottom:10px;line-height:1.5}
+.fnote{font-size:.68rem;color:var(--mut);margin-top:7px;font-style:italic}
+.fdisc{font-family:'Syne',sans-serif;font-size:2.2rem;color:var(--gold);line-height:1;text-align:center;flex-shrink:0}
+.fdisc small{display:block;font-family:'Outfit',sans-serif;font-size:.64rem;color:var(--dim);font-weight:600;text-transform:uppercase;margin-top:3px}
+/* MODAL */
+.mover{position:fixed;inset:0;background:rgba(0,0,0,.78);z-index:500;display:none;align-items:center;justify-content:center;padding:16px}
+.mover.open{display:flex;animation:fi .2s ease}
+@keyframes fi{from{opacity:0}to{opacity:1}}
+.mbox{background:var(--surf);border:1px solid var(--bdr);border-radius:16px;width:100%;max-width:370px;overflow:hidden;position:relative;animation:su .25s ease}
+@keyframes su{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.mcls{position:absolute;top:10px;right:12px;background:rgba(255,255,255,.08);border:none;color:var(--dim);font-size:1rem;width:28px;height:28px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:1}
+.mcls:hover{background:rgba(255,255,255,.15);color:var(--txt)}
+.mbr{display:flex;align-items:center;gap:10px;padding:16px 16px 12px}
+.mbi{width:42px;height:42px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.mbn{font-weight:700;font-size:.92rem;color:var(--txt)}
+.mdt{font-size:.75rem;color:var(--dim);line-height:1.4;margin-top:2px}
+/* Ad inside modal */
+.madw{padding:0 16px 12px}
+.madl{font-size:.64rem;color:var(--mut);text-align:center;margin-bottom:5px;text-transform:uppercase;letter-spacing:.5px}
+.mads{width:100%;height:110px;background:rgba(255,255,255,.025);border:1px dashed rgba(255,255,255,.1);border-radius:var(--rs);display:flex;align-items:center;justify-content:center;color:var(--mut);font-size:.64rem;text-transform:uppercase;letter-spacing:.8px}
+.mdiv{height:1px;background:var(--bdr);margin:0 16px}
+.mca{padding:14px 16px}
+.mch{display:flex;align-items:center;gap:5px;font-size:.78rem;font-weight:600;color:var(--txt);margin-bottom:9px}
+.mcb{display:flex;align-items:stretch;background:rgba(240,192,64,.08);border:2px dashed rgba(240,192,64,.4);border-radius:var(--rs);overflow:hidden;margin-bottom:9px}
+.mct{flex:1;padding:10px 12px;font:800 1rem 'Courier New',monospace;color:var(--gold);letter-spacing:1.5px}
+.mcp{background:var(--goldd);border:none;padding:10px 14px;cursor:pointer;font:700 .76rem 'Outfit',sans-serif;color:#000;transition:background .15s;white-space:nowrap}
+.mcp:hover{background:var(--gold)}
+.mcp.ok{background:var(--grn)!important;color:#fff}
+.mnoc{text-align:center;padding:12px;background:rgba(56,178,122,.08);border:1px solid rgba(56,178,122,.18);border-radius:var(--rs);margin-bottom:9px;font-size:.8rem;color:var(--grn)}
+.msb{display:block;width:100%;background:var(--red);border:none;border-radius:var(--rs);padding:11px;text-align:center;color:#fff;font:700 .86rem 'Outfit',sans-serif;text-decoration:none;cursor:pointer;transition:background .15s;margin-bottom:9px}
+.msb:hover{background:var(--redl)}
+.mdisc{font-size:.64rem;color:var(--mut);text-align:center;line-height:1.5;padding:0 16px 14px}
+/* SIDEBAR */
+.sb{display:flex;flex-direction:column;gap:16px}
+.wid{background:var(--card);border:1px solid var(--bdr);border-radius:var(--r);overflow:hidden}
+.wh{padding:11px 15px;border-bottom:1px solid var(--bdr);font-size:.8rem;font-weight:700;color:var(--txt);display:flex;align-items:center;gap:6px}
+.si{display:flex;align-items:center;gap:9px;padding:8px 15px;text-decoration:none;transition:background .15s;cursor:pointer}
+.si:hover{background:rgba(255,255,255,.03)}
+.si-ic{font-size:1.2rem;width:26px;text-align:center;flex-shrink:0}
+.si-n{font-size:.81rem;font-weight:600;color:var(--txt)}
+.si-c{font-size:.68rem;color:var(--dim)}
+.si-a{color:var(--mut);font-size:.78rem;margin-left:auto}
+.ta{padding:11px 15px;display:flex;flex-wrap:wrap;gap:6px}
+.tg{background:rgba(255,255,255,.04);border:1px solid var(--bdr);border-radius:50px;padding:3px 10px;font-size:.71rem;font-weight:500;color:var(--dim);cursor:pointer;text-decoration:none;transition:all .15s}
+.tg:hover{background:rgba(229,62,62,.1);border-color:var(--red);color:var(--redl)}
+.nlw{padding:15px}
+.nlw h3{font-family:'Syne',sans-serif;font-size:.95rem;color:var(--txt);margin-bottom:4px}
+.nlw p{font-size:.75rem;color:var(--dim);line-height:1.5;margin-bottom:11px}
+.nli{width:100%;background:rgba(255,255,255,.06);border:1px solid var(--bdr);border-radius:var(--rs);padding:8px 11px;color:var(--txt);font:400 .81rem 'Outfit',sans-serif;outline:none;margin-bottom:7px}
+.nli:focus{border-color:var(--red)}
+.nli::placeholder{color:var(--mut)}
+.nlb{width:100%;background:var(--red);border:none;border-radius:var(--rs);padding:9px;font:700 .81rem 'Outfit',sans-serif;color:#fff;cursor:pointer}
+.nlb:hover{background:var(--redl)}
+/* UPCOMING */
+.upsec{max-width:1320px;margin:0 auto;padding:0 20px 38px}
+.sech{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.sectl{font-family:'Syne',sans-serif;font-size:1.2rem;color:var(--txt)}
+.sectl span{color:var(--red)}
+.upg{display:grid;grid-template-columns:repeat(auto-fit,minmax(225px,1fr));gap:13px}
+.uc{background:var(--card);border:1px solid var(--bdr);border-radius:var(--r);padding:16px;position:relative;overflow:hidden}
+.uc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--red),var(--gold))}
+.ul{font-size:.66rem;color:var(--dim);text-transform:uppercase;font-weight:600;letter-spacing:.5px}
+.ut{font-weight:700;color:var(--txt);font-size:.88rem;margin:4px 0 9px}
+.cdc{display:flex;gap:5px}
+.cdu{text-align:center}
+.cdn{background:rgba(240,192,64,.1);border:1px solid rgba(240,192,64,.18);border-radius:5px;padding:4px 7px;font-family:'Syne',sans-serif;font-size:1.2rem;color:var(--gold);display:block;min-width:36px}
+.cdl{font-size:.56rem;color:var(--mut);text-transform:uppercase;letter-spacing:.4px;margin-top:2px}
+/* HOW */
+.how{background:var(--surf);border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr);padding:40px 20px}
+.howi{max-width:1320px;margin:0 auto}
+.howg{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:26px;margin-top:26px}
+.hs{text-align:center;padding:0 8px}
+.hn{width:44px;height:44px;border-radius:50%;background:rgba(229,62,62,.1);border:2px solid rgba(229,62,62,.22);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:1.1rem;color:var(--redl);margin:0 auto 11px}
+.hs h3{font-size:.86rem;font-weight:700;color:var(--txt);margin-bottom:4px}
+.hs p{font-size:.75rem;color:var(--dim);line-height:1.5}
+/* DISCLAIMER */
+.disclbar{background:rgba(240,192,64,.05);border-top:1px solid rgba(240,192,64,.13);border-bottom:1px solid rgba(240,192,64,.13);padding:10px 20px;text-align:center}
+.disclbar p{font-size:.72rem;color:var(--dim);max-width:1100px;margin:0 auto;line-height:1.6}
+/* SEO */
+.seo{max-width:1320px;margin:0 auto;padding:38px 20px}
+.seo h2{font-family:'Syne',sans-serif;font-size:1.25rem;color:var(--txt);margin-bottom:9px}
+.seo h3{font-family:'Syne',sans-serif;font-size:.98rem;color:var(--txt);margin:17px 0 6px}
+.seo p{color:var(--dim);font-size:.83rem;line-height:1.75;margin-bottom:7px}
+/* FOOTER */
+footer{background:#07070D;border-top:1px solid var(--bdr);padding:32px 20px 14px}
+.fi{max-width:1320px;margin:0 auto}
+.fg{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:26px;margin-bottom:22px}
+.fb .logo{display:block;font-size:1.2rem;margin-bottom:7px}
+.fb p{font-size:.75rem;color:var(--dim);line-height:1.6;max-width:210px}
+.fc h4{font-size:.74rem;font-weight:700;color:var(--txt);text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px}
+.fc a{display:block;color:var(--dim);text-decoration:none;font-size:.75rem;margin-bottom:6px;transition:color .15s}
+.fc a:hover{color:var(--gold)}
+.fbot{border-top:1px solid var(--bdr);padding-top:12px;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:9px}
+.fbot p{font-size:.69rem;color:var(--mut);max-width:600px;line-height:1.6}
+.fls{display:flex;gap:12px;flex-wrap:wrap;flex-shrink:0}
+.fls a{font-size:.69rem;color:var(--mut);text-decoration:none}
+.fls a:hover{color:var(--gold)}
+/* TOAST */
+.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--grn);color:#fff;padding:9px 20px;border-radius:50px;font-size:.82rem;font-weight:600;z-index:600;transition:transform .3s cubic-bezier(.34,1.56,.64,1);pointer-events:none}
+.toast.show{transform:translateX(-50%) translateY(0)}
+@media(max-width:1024px){.main{grid-template-columns:1fr}.sb{display:none}.fg{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.nav-r .nl:not(.adm){display:none}.hero h1{font-size:1.55rem}.fg{grid-template-columns:1fr}.feat{grid-template-columns:1fr}.fdisc{display:none}.grid{grid-template-columns:1fr}}
+/* ── THEME TOGGLE BUTTON ── */
+.tbtn{background:transparent;border:1px solid var(--bdr);border-radius:8px;padding:5px 8px;font-size:.9rem;cursor:pointer;line-height:1;transition:all .2s;flex-shrink:0;color:var(--dim)}
+.tbtn:hover{border-color:var(--gold);background:rgba(240,192,64,.08)}
+/* ── LIGHT MODE ── */
+html.light{--bg:#F4F4FC;--surf:#FFFFFF;--card:#EAEAF4;--bdr:rgba(0,0,0,0.09);--txt:#1C1C30;--dim:#5A5A80;--mut:#9898B8;--red:#C53030;--redl:#E53E3E;--gold:#B8960A;--goldd:#956A06;--teal:#007878;--grn:#267A55;--org:#CC5500;--sh:0 8px 28px rgba(0,0,0,.12)}
+html.light body{background:var(--bg)}
+html.light body::before{background:radial-gradient(ellipse at 20% 10%,rgba(197,48,48,.04) 0%,transparent 55%),radial-gradient(ellipse at 80% 90%,rgba(0,120,120,.03) 0%,transparent 50%)}
+html.light nav{background:rgba(244,244,252,.96)}
+html.light .srch input{background:rgba(0,0,0,.06);border-color:rgba(0,0,0,.12);color:var(--txt)}
+html.light .srch input::placeholder{color:var(--mut)}
+html.light .ads{background:rgba(0,0,0,.04);border-color:rgba(0,0,0,.1)}
+html.light .feat{background:linear-gradient(135deg,#F0E8F2,#E8EAF8);border-color:rgba(197,48,48,.3)}
+html.light .feat::after{background:radial-gradient(circle,rgba(197,48,48,.07) 0%,transparent 70%)}
+html.light .mover{background:rgba(0,0,0,.55)}
+html.light .mbox{background:#FFFFFF}
+html.light .mcls{background:rgba(0,0,0,.07)}
+html.light .mcls:hover{background:rgba(0,0,0,.12);color:var(--txt)}
+html.light .mads{background:rgba(0,0,0,.04);border-color:rgba(0,0,0,.1)}
+html.light .si:hover{background:rgba(0,0,0,.04)}
+html.light .tg{background:rgba(0,0,0,.04)}
+html.light .tg:hover{background:rgba(197,48,48,.08)}
+html.light .nli{background:rgba(0,0,0,.06);color:var(--txt)}
+html.light .nli::placeholder{color:var(--mut)}
+html.light .nl.adm{background:rgba(0,0,0,.06);border-color:rgba(0,0,0,.12)}
+html.light footer{background:#E6E6F4}
+html.light .disclbar{background:rgba(180,140,0,.06);border-color:rgba(180,140,0,.18)}
+html.light .pill{background:rgba(197,48,48,.1);border-color:rgba(197,48,48,.22)}
+html.light .disc-note{background:rgba(180,140,0,.07);border-color:rgba(180,140,0,.18)}
+html.light .uc{background:var(--card)}
+html.light .how{background:var(--surf)}
+html.light .tbtn{border-color:rgba(0,0,0,.15)}
+</style>
+</head>
+<body>
+<div class="z1">
+<nav><div class="nav-i">
+  <a href="/" class="logo"><b>Off</b>Price<span>.me</span></a>
+  <div class="srch"><input type="text" id="si" placeholder="Search brand, country, category..." oninput="doSearch()"><button onclick="doSearch()">Search</button></div>
+  <div class="nav-r">
+    <a href="#deals" class="nl">Deals</a>
+    <a href="#upc" class="nl">Calendar</a>
+    <a href="privacy.html" class="nl">Privacy</a>
+    <a href="index.html" class="nl">About</a>
+    <button class="tbtn" id="themeBtn" onclick="toggleTheme()" title="Toggle light/dark mode">🌙</button>
+    <a href="admin.html" class="nl adm">⚙ Admin</a>
+  </div>
+</div></nav>
+
+<!-- TOP AD 728x90 -->
+<div class="adw"><div class="ads adlb">
+<!-- Replace: <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-XXXX" data-ad-slot="XXXX"></ins> -->
+📣 AdSense Leaderboard (728×90) — ca-pub-XXXXXXXX
+</div></div>
+
+<section class="hero">
+  <div class="pill"><span class="dot"></span> Deals Listed From Public Sources</div>
+  <h1>Best <em>Deals & Offers</em><br>Across the Middle East</h1>
+  <p>Browse promotions from popular brands in UAE 🇦🇪 · KSA 🇸🇦 · Kuwait 🇰🇼 · Qatar 🇶🇦 · Bahrain 🇧🇭 · Oman 🇴🇲 · Egypt 🇪🇬</p>
+  <div class="disc-note">⚠️ Always verify deals directly with the brand before purchasing. Offers change without notice.</div>
+  <div class="hstats">
+    <div><div class="stn">30+</div><div class="stl">Listed Deals</div></div>
+    <div><div class="stn">7</div><div class="stl">GCC Countries</div></div>
+    <div><div class="stn">Free</div><div class="stl">Always</div></div>
+  </div>
+</section>
+
+<!-- COUNTRY TABS -->
+<div class="tbar" id="deals"><div class="tabs">
+  <button class="ctab act" data-c="all" onclick="fC('all',this)">🌍 All GCC <span class="cn" id="c-all">—</span></button>
+  <button class="ctab" data-c="UAE" onclick="fC('UAE',this)">🇦🇪 UAE <span class="cn" id="c-UAE">—</span></button>
+  <button class="ctab" data-c="KSA" onclick="fC('KSA',this)">🇸🇦 Saudi Arabia <span class="cn" id="c-KSA">—</span></button>
+  <button class="ctab" data-c="Kuwait" onclick="fC('Kuwait',this)">🇰🇼 Kuwait <span class="cn" id="c-Kuwait">—</span></button>
+  <button class="ctab" data-c="Qatar" onclick="fC('Qatar',this)">🇶🇦 Qatar <span class="cn" id="c-Qatar">—</span></button>
+  <button class="ctab" data-c="Bahrain" onclick="fC('Bahrain',this)">🇧🇭 Bahrain <span class="cn" id="c-Bahrain">—</span></button>
+  <button class="ctab" data-c="Oman" onclick="fC('Oman',this)">🇴🇲 Oman <span class="cn" id="c-Oman">—</span></button>
+  <button class="ctab" data-c="Egypt" onclick="fC('Egypt',this)">🇪🇬 Egypt <span class="cn" id="c-Egypt">—</span></button>
+  <button class="ctab" data-c="GCC" onclick="fC('GCC',this)">🌐 All Countries <span class="cn" id="c-GCC">—</span></button>
+</div></div>
+
+<!-- CAT TABS -->
+<div class="catbar"><div class="cats">
+  <button class="cat act" data-k="all" onclick="fK('all',this)">🏆 All</button>
+  <button class="cat" data-k="food" onclick="fK('food',this)">🍔 Food</button>
+  <button class="cat" data-k="fashion" onclick="fK('fashion',this)">👗 Fashion</button>
+  <button class="cat" data-k="electronics" onclick="fK('electronics',this)">📱 Electronics</button>
+  <button class="cat" data-k="travel" onclick="fK('travel',this)">✈️ Travel</button>
+  <button class="cat" data-k="beauty" onclick="fK('beauty',this)">💄 Beauty</button>
+  <button class="cat" data-k="grocery" onclick="fK('grocery',this)">🛒 Grocery</button>
+  <button class="cat" data-k="rides" onclick="fK('rides',this)">🚗 Rides</button>
+  <button class="cat" data-k="kids" onclick="fK('kids',this)">👶 Kids</button>
+</div></div>
+
+<div class="main">
+<div>
+  <!-- AD IN-CONTENT -->
+  <div class="ads adil">📣 AdSense In-Content (728×90) — ca-pub-XXXXXXXX</div>
+
+  <!-- FEATURED -->
+  <div class="feat">
+    <div>
+      <div class="ftag">⚡ Featured — GCC Wide</div>
+      <div class="ftitle">Noon — Cashback Offer All GCC Countries</div>
+      <div class="fdesc">Noon covers UAE, KSA, Kuwait, Qatar, Bahrain and Oman. A cashback code has been publicly reported as available. Click to reveal and verify at checkout on the Noon app or website.</div>
+      <div class="mrow" style="max-width:290px">
+        <div class="mtxt">••••••</div>
+        <button class="rbtn" onclick="openModal('gcc01')">👁 Show Code</button>
+      </div>
+      <div class="fnote">* Cashback amount and eligibility vary. Verify terms on Noon before purchase.</div>
+    </div>
+    <div class="fdisc">Noon<small>GCC OFFER</small></div>
+  </div>
+
+  <div class="drh">
+    <h2>Current <span style="color:var(--red)">Deals & Offers</span></h2>
+    <span id="dc">Loading...</span>
+  </div>
+  <div class="grid" id="dg"></div>
+  <div id="nr" class="nores" style="display:none"><h3>No deals found</h3><p>Try a different search or filter.</p></div>
+
+  <!-- MID AD -->
+  <div class="ads adil">📣 AdSense Mid-Content (728×90) — ca-pub-XXXXXXXX</div>
+</div>
+
+<!-- SIDEBAR -->
+<aside class="sb">
+  <div class="ads adrect">📣 AdSense Sidebar (300×250)</div>
+  <div class="wid">
+    <div class="wh">🏬 Browse by Brand</div>
+    <a class="si" href="#" onclick="ss('Noon');return false"><span class="si-ic">🟡</span><div><div class="si-n">Noon</div><div class="si-c">GCC-wide</div></div><span class="si-a">›</span></a>
+    <a class="si" href="#" onclick="ss('Amazon');return false"><span class="si-ic">📦</span><div><div class="si-n">Amazon</div><div class="si-c">UAE · KSA</div></div><span class="si-a">›</span></a>
+    <a class="si" href="#" onclick="ss('Talabat');return false"><span class="si-ic">🍊</span><div><div class="si-n">Talabat</div><div class="si-c">All GCC</div></div><span class="si-a">›</span></a>
+    <a class="si" href="#" onclick="ss('Careem');return false"><span class="si-ic">🟢</span><div><div class="si-n">Careem</div><div class="si-c">UAE · KSA</div></div><span class="si-a">›</span></a>
+    <a class="si" href="#" onclick="ss('Namshi');return false"><span class="si-ic">👗</span><div><div class="si-n">Namshi</div><div class="si-c">All GCC</div></div><span class="si-a">›</span></a>
+    <a class="si" href="#" onclick="ss('Jarir');return false"><span class="si-ic">📚</span><div><div class="si-n">Jarir</div><div class="si-c">KSA · Kuwait · Qatar</div></div><span class="si-a">›</span></a>
+    <a class="si" href="#" onclick="ss('Booking');return false"><span class="si-ic">🏨</span><div><div class="si-n">Booking.com</div><div class="si-c">All GCC Hotels</div></div><span class="si-a">›</span></a>
+    <a class="si" href="#" onclick="ss('iHerb');return false"><span class="si-ic">💊</span><div><div class="si-n">iHerb</div><div class="si-c">Ships to GCC</div></div><span class="si-a">›</span></a>
+  </div>
+  <div class="wid" id="nl">
+    <div class="nlw">
+      <h3>🔔 Deal Alerts</h3>
+      <p>Get notified about Ramadan, White Friday, Eid and National Day offers — free.</p>
+      <input class="nli" type="email" id="nle" placeholder="your@email.com">
+      <button class="nlb" onclick="subNL()">Subscribe Free</button>
+      <p style="font-size:.65rem;color:var(--mut);margin-top:7px">By subscribing you agree to our <a href="privacy.html" style="color:var(--dim)">Privacy Policy</a>.</p>
+    </div>
+  </div>
+  <div class="wid">
+    <div class="wh">🔥 Popular Searches</div>
+    <div class="ta">
+      <a href="#" class="tg" onclick="ss('Noon');return false">Noon GCC</a>
+      <a href="#" class="tg" onclick="ss('Talabat');return false">Talabat</a>
+      <a href="#" class="tg" onclick="ss('Amazon');return false">Amazon</a>
+      <a href="#" class="tg" onclick="ss('Jarir');return false">Jarir KSA</a>
+      <a href="#" class="tg" onclick="ss('fashion');return false">Fashion Sale</a>
+      <a href="#" class="tg" onclick="ss('travel');return false">Hotel Deals</a>
+      <a href="#" class="tg" onclick="ss('food');return false">Food Delivery</a>
+      <a href="#" class="tg" onclick="ss('electronics');return false">Electronics</a>
+      <a href="#" class="tg" onclick="ss('iHerb');return false">iHerb</a>
+      <a href="#" class="tg" onclick="ss('grocery');return false">Grocery</a>
+    </div>
+  </div>
+  <div class="ads adrect">📣 AdSense Sidebar Bottom (300×250)</div>
+</aside>
+</div>
+
+<!-- DISCLAIMER -->
+<div class="disclbar">
+  <p><strong>⚠️ Important Disclaimer:</strong> Deals listed on OffPrice.me are sourced from publicly available information for informational purposes only. We do not guarantee that any offer, code, or discount is currently active, accurate or applicable to your location or account. Always verify terms, pricing and availability directly with the retailer's own website or app before completing any purchase. Some links may be affiliate links — we may earn a small commission at no additional cost to you. See our <a href="privacy.html" style="color:var(--dim)">full disclosure</a>.</p>
+</div>
+
+<!-- UPCOMING -->
+<section class="upsec" id="upc">
+  <div class="sech"><h2 class="sectl">Upcoming <span>Sale Events</span></h2></div>
+  <div class="upg">
+    <div class="uc"><div class="ul">🇦🇪 UAE · GCC</div><div class="ut">UAE National Day Sale</div><div class="cdc" id="cd1"></div></div>
+    <div class="uc"><div class="ul">🌍 All GCC</div><div class="ut">White Friday / Black Friday</div><div class="cdc" id="cd2"></div></div>
+    <div class="uc"><div class="ul">🇦🇪 Dubai</div><div class="ut">Dubai Shopping Festival</div><div class="cdc" id="cd3"></div></div>
+    <div class="uc"><div class="ul">🌙 All GCC</div><div class="ut">Ramadan Sale 2027 (Est.)</div><div class="cdc" id="cd4"></div></div>
+  </div>
+</section>
+
+<!-- HOW -->
+<section class="how">
+  <div class="howi">
+    <h2 class="sectl" style="text-align:center">How <span>OffPrice.me</span> Works</h2>
+    <div class="howg">
+      <div class="hs"><div class="hn">1</div><h3>Choose Country</h3><p>Select UAE, KSA, Kuwait, Qatar, Bahrain, Oman or Egypt to filter relevant deals.</p></div>
+      <div class="hs"><div class="hn">2</div><h3>Find a Deal</h3><p>Browse by category or search a brand name. Each card shows deal details and countries covered.</p></div>
+      <div class="hs"><div class="hn">3</div><h3>Reveal & Copy</h3><p>Click "Show Code" to reveal any promo code. Copy with one tap. Some deals need no code — just click through.</p></div>
+      <div class="hs"><div class="hn">4</div><h3>Verify & Shop</h3><p>Always check the code works at checkout before completing payment. Offers change frequently.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- BOTTOM AD -->
+<div class="adw" style="padding-bottom:14px;padding-top:16px">
+  <div class="ads adlb">📣 AdSense Bottom Leaderboard (728×90) — ca-pub-XXXXXXXX</div>
+</div>
+
+<section class="seo">
+  <h2>GCC Deals & Offers Guide — May 2026</h2>
+  <p>OffPrice.me is a deal discovery website listing publicly available promotions from major retailers across the Gulf Cooperation Council (GCC) region — including UAE, Saudi Arabia, Kuwait, Qatar, Bahrain, Oman and Egypt. We aggregate deal information from brands' own websites and publicly available sources to help shoppers find current offers in one place.</p>
+  <h3>How We List Deals</h3>
+  <p>All deals on OffPrice.me are listed for informational purposes. We source information from publicly available brand promotions, official retailer websites, and community-reported offers. We do not create or issue coupon codes ourselves. Codes and offers may expire or change without notice — always verify at the retailer before purchase.</p>
+  <h3>Popular Brands Across GCC Countries</h3>
+  <p>We list deals from Noon (UAE, KSA, Kuwait, Qatar, Bahrain, Oman), Amazon (UAE, KSA), Talabat (all GCC), Careem (UAE, KSA), Namshi, 6th Street, Jarir Bookstore (KSA, Qatar, Kuwait, Bahrain), iHerb, SHEIN, Ounass, Sephora Middle East, Carrefour, LuLu Hypermarket, eXtra Electronics, Xcite Kuwait, Mumzworld and more.</p>
+</section>
+
+<footer>
+  <div class="fi">
+    <div class="fg">
+      <div class="fb"><a href="/" class="logo"><b>Off</b>Price<span>.me</span></a><p>Deal discovery for GCC shoppers. Listing publicly available offers across the Middle East.</p></div>
+      <div class="fc"><h4>Countries</h4><a href="#" onclick="fC('UAE',document.querySelector('[data-c=UAE]'))">UAE</a><a href="#" onclick="fC('KSA',document.querySelector('[data-c=KSA]'))">Saudi Arabia</a><a href="#" onclick="fC('Kuwait',document.querySelector('[data-c=Kuwait]'))">Kuwait</a><a href="#" onclick="fC('Qatar',document.querySelector('[data-c=Qatar]'))">Qatar</a><a href="#" onclick="fC('Bahrain',document.querySelector('[data-c=Bahrain]'))">Bahrain</a><a href="#" onclick="fC('Oman',document.querySelector('[data-c=Oman]'))">Oman</a></div>
+      <div class="fc"><h4>Categories</h4><a href="#" onclick="fK('food',document.querySelector('[data-k=food]'))">Food Delivery</a><a href="#" onclick="fK('fashion',document.querySelector('[data-k=fashion]'))">Fashion</a><a href="#" onclick="fK('electronics',document.querySelector('[data-k=electronics]'))">Electronics</a><a href="#" onclick="fK('travel',document.querySelector('[data-k=travel]'))">Travel</a><a href="#" onclick="fK('beauty',document.querySelector('[data-k=beauty]'))">Beauty</a><a href="#" onclick="fK('grocery',document.querySelector('[data-k=grocery]'))">Grocery</a></div>
+      <div class="fc"><h4>Legal</h4><a href="privacy.html">Privacy Policy</a><a href="privacy.html#affiliate">Affiliate Disclosure</a><a href="privacy.html#cookies">Cookie Policy</a><a href="privacy.html#terms">Terms of Use</a><a href="privacy.html#contact">Contact Us</a><a href="admin.html">Admin</a></div>
+    </div>
+    <div class="fbot">
+      <p>© 2026 OffPrice.me. Deals listed for informational purposes only. No guarantee of accuracy or availability. Some links are affiliate links — we may earn a commission at no cost to you. Always verify at the retailer before purchasing. OffPrice.me is not affiliated with any listed brand unless stated.</p>
+      <div class="fls"><a href="privacy.html">Privacy</a><a href="privacy.html#terms">Terms</a><a href="privacy.html#affiliate">Disclosure</a></div>
+    </div>
+  </div>
+</footer>
+
+<!-- CODE REVEAL MODAL -->
+<div class="mover" id="cm">
+  <div class="mbox">
+    <button class="mcls" onclick="closeM()">✕</button>
+    <div class="mbr">
+      <div class="mbi" id="mIcon"></div>
+      <div><div class="mbn" id="mBrand"></div><div class="mdt" id="mTitle"></div></div>
+    </div>
+    <!-- AD INSIDE MODAL -->
+    <div class="madw">
+      <div class="madl">Advertisement</div>
+      <div class="mads">
+        <!-- Replace with: <ins class="adsbygoogle" style="display:block;width:300px;height:90px" data-ad-client="ca-pub-XXXX" data-ad-slot="XXXX"></ins> -->
+        📣 AdSense (300×90) — shown before code reveal
+      </div>
+    </div>
+    <div class="mdiv"></div>
+    <div class="mca">
+      <div class="mch">🎉 <span id="mHead">Your Code</span></div>
+      <div id="mCB"></div>
+      <a href="#" class="msb" id="mSB" target="_blank" rel="noopener sponsored">Go to Store →</a>
+    </div>
+    <div class="mdisc" id="mDisc">Always verify this code at checkout before completing your purchase. Terms and validity may have changed since listing. OffPrice.me may receive a referral commission if you purchase via this link.</div>
+  </div>
+</div>
+
+<div class="toast" id="toast">✓ Copied!</div>
+
+<script>
+const DEALS=[
+  // GCC-WIDE
+  {id:'gcc01',brand:'Noon',icon:'🟡',ibg:'#FEEE00',ic:'#111',cat:'electronics',cc:['GCC'],disc:'Cashback Offer',strip:'hot',title:'Noon — Cashback on All GCC Orders',desc:'Noon operates across UAE, KSA, Kuwait, Qatar, Bahrain and Oman. Code CBB20 has been publicly reported as a cashback code — amounts and eligibility vary by country and user type. Verify at checkout.',type:'code',code:'CBB20',url:'https://noon.com',exp:'2026-05-31'},
+  {id:'gcc02',brand:'Namshi',icon:'👗',ibg:'#1A1A2E',ic:'#E8B84B',cat:'fashion',cc:['GCC'],disc:'Seasonal Sale',strip:'offer',title:'Namshi — End of Season Fashion Sale',desc:'Namshi runs regular end-of-season sales with discounts across international fashion brands. Browse the sale section on their website for current deals. Free delivery on orders above threshold.',type:'link',code:null,url:'https://namshi.com',exp:'2026-12-31'},
+  {id:'gcc03',brand:'6th Street',icon:'👟',ibg:'#111',ic:'#fff',cat:'fashion',cc:['GCC'],disc:'Seasonal Offers',strip:'',title:'6th Street — Fashion & Footwear Promotions',desc:'6th Street offers seasonal discounts across international fashion and footwear brands. Valid in UAE, KSA, Kuwait and Qatar. Check their sale section for current discounts.',type:'link',code:null,url:'https://6thstreet.com',exp:'2026-12-31'},
+  {id:'gcc04',brand:'iHerb',icon:'💊',ibg:'#5CBF21',ic:'#fff',cat:'beauty',cc:['GCC'],disc:'New User Offer',strip:'offer',title:'iHerb — New Customer Discount (Ships to GCC)',desc:'iHerb ships health supplements and organic beauty products to all GCC countries. New customers can check the iHerb website for the current welcome offer.',type:'link',code:null,url:'https://iherb.com',exp:'2026-12-31'},
+  {id:'gcc05',brand:'SHEIN',icon:'🛍️',ibg:'#FF3366',ic:'#fff',cat:'fashion',cc:['GCC'],disc:'App Promotions',strip:'',title:'SHEIN GCC — Regular App & First-Order Deals',desc:'SHEIN offers welcome discounts and app-exclusive deals for customers in UAE, KSA, Kuwait, Qatar, Bahrain and Oman. Open the SHEIN app to see currently available offers.',type:'link',code:null,url:'https://shein.com',exp:'2026-12-31'},
+  {id:'gcc06',brand:'Ounass',icon:'✨',ibg:'#2C2C2C',ic:'#CFBA8A',cat:'fashion',cc:['GCC'],disc:'Luxury Sale',strip:'',title:'Ounass — Designer Fashion Seasonal Sale',desc:'Ounass is the GCC\'s luxury fashion platform. They run seasonal sales on designer brands with same-day delivery in select cities. Check their website for current offers.',type:'link',code:null,url:'https://ounass.com',exp:'2026-12-31'},
+  {id:'gcc07',brand:'Booking.com',icon:'🏨',ibg:'#003580',ic:'#fff',cat:'travel',cc:['GCC'],disc:'Member Savings',strip:'offer',title:'Booking.com — Genius Member Deals on GCC Hotels',desc:'Booking.com Genius members receive discounts at participating hotels across Dubai, Riyadh, Kuwait City, Doha, Manama and Muscat. Create a free Booking.com account to access member pricing automatically.',type:'link',code:null,url:'https://booking.com',exp:'2026-12-31'},
+  {id:'gcc08',brand:'Mumzworld',icon:'👶',ibg:'#F48FB1',ic:'#fff',cat:'kids',cc:['GCC'],disc:'Kids & Baby Sale',strip:'',title:'Mumzworld — Baby & Kids Seasonal Offers',desc:'Mumzworld runs regular promotions on strollers, car seats, toys and baby essentials across the GCC. Check their website for current sale items.',type:'link',code:null,url:'https://mumzworld.com',exp:'2026-12-31'},
+  // UAE
+  {id:'uae01',brand:'Amazon UAE',icon:'📦',ibg:'#FF9900',ic:'#111',cat:'electronics',cc:['UAE'],disc:'New User Offer',strip:'hot',title:'Amazon UAE — New Customer Welcome Offer',desc:'Amazon.ae periodically offers welcome promotions for first-time app orders. Visit the Amazon UAE app or website to see the current new-user offer.',type:'link',code:null,url:'https://amazon.ae',exp:'2026-12-31'},
+  {id:'uae02',brand:'Talabat UAE',icon:'🍔',ibg:'#FF6B00',ic:'#fff',cat:'food',cc:['UAE'],disc:'App Deals',strip:'hot',title:'Talabat UAE — Food & Grocery App Offers',desc:'Talabat regularly offers first-order and app-exclusive discounts across Dubai, Abu Dhabi, Sharjah and other UAE cities. Open the Talabat app to see currently available promo codes.',type:'link',code:null,url:'https://talabat.com',exp:'2026-12-31'},
+  {id:'uae03',brand:'Careem UAE',icon:'🚗',ibg:'#2DBD6E',ic:'#fff',cat:'rides',cc:['UAE'],disc:'Ride Offers',strip:'',title:'Careem UAE — In-App Ride Promotions',desc:'Careem sends promo codes via the app and email. Open the Careem app, navigate to the Promo section to see currently available ride discount codes in Dubai, Abu Dhabi and Sharjah.',type:'link',code:null,url:'https://careem.com',exp:'2026-12-31'},
+  {id:'uae04',brand:'LuLu Hypermarket',icon:'🧺',ibg:'#E63946',ic:'#fff',cat:'grocery',cc:['UAE'],disc:'Online Offers',strip:'new',title:'LuLu UAE — Online Grocery & Shopping Promotions',desc:'LuLu Hypermarket runs online-exclusive grocery and household promotions across UAE. Check the LuLu online store or app for current discount codes.',type:'link',code:null,url:'https://luluhypermarket.com',exp:'2026-12-31'},
+  {id:'uae05',brand:'Carrefour UAE',icon:'🏪',ibg:'#004A97',ic:'#fff',cat:'grocery',cc:['UAE'],disc:'Online Promotions',strip:'',title:'Carrefour UAE — Online-Exclusive Deals',desc:'Carrefour UAE offers online-exclusive promotions on electronics, appliances and grocery. Check Carrefour UAE\'s website or app for current promotional codes.',type:'link',code:null,url:'https://carrefouruae.com',exp:'2026-12-31'},
+  {id:'uae06',brand:'Sephora ME',icon:'💄',ibg:'#1A1A1A',ic:'#fff',cat:'beauty',cc:['UAE'],disc:'Beauty Promotions',strip:'',title:'Sephora Middle East — Seasonal Beauty Offers',desc:'Sephora Middle East runs seasonal beauty campaigns and loyalty member offers in the UAE. Check the Sephora app for current promotions.',type:'link',code:null,url:'https://sephora.com/ae',exp:'2026-12-31'},
+  {id:'uae07',brand:'FreshToHome',icon:'🐟',ibg:'#00B4D8',ic:'#fff',cat:'grocery',cc:['UAE'],disc:'New User Deal',strip:'new',title:'FreshToHome — Fresh Seafood & Meat Delivery UAE',desc:'FreshToHome delivers fresh seafood and meat across UAE. New user discounts are typically available — check their app at sign-up for current offers.',type:'link',code:null,url:'https://freshtohome.ae',exp:'2026-12-31'},
+  {id:'uae08',brand:'Deliveroo UAE',icon:'🛵',ibg:'#00CCBC',ic:'#fff',cat:'food',cc:['UAE'],disc:'First Order Offer',strip:'',title:'Deliveroo UAE — New User First Order Promotion',desc:'Deliveroo offers first-order discounts in Dubai and Abu Dhabi. Download the Deliveroo app to see the current new-user promotional offer. Minimum order applies.',type:'link',code:null,url:'https://deliveroo.ae',exp:'2026-12-31'},
+  // KSA
+  {id:'ksa01',brand:'Amazon KSA',icon:'📦',ibg:'#FF9900',ic:'#111',cat:'electronics',cc:['KSA'],disc:'New User Offer',strip:'hot',title:'Amazon Saudi Arabia — New Customer Deals',desc:'Amazon.sa periodically offers welcome promotions for new customers on the app. Visit Amazon KSA to see the current new-user offer available.',type:'link',code:null,url:'https://amazon.sa',exp:'2026-12-31'},
+  {id:'ksa02',brand:'Noon KSA',icon:'🟡',ibg:'#FEEE00',ic:'#111',cat:'electronics',cc:['KSA'],disc:'Seasonal Deals',strip:'',title:'Noon Saudi Arabia — Electronics & Fashion Offers',desc:'Noon KSA runs regular electronics and fashion promotions. Visit noon.com for Saudi Arabia or the app to see currently active codes and flash deals.',type:'link',code:null,url:'https://noon.com/saudi-en',exp:'2026-12-31'},
+  {id:'ksa03',brand:'Jarir Bookstore',icon:'📚',ibg:'#003E73',ic:'#fff',cat:'electronics',cc:['KSA'],disc:'Free Shipping + Sale',strip:'offer',title:'Jarir — Saudi Arabia\'s Leading Tech Retailer',desc:'Jarir Bookstore (est. 1974) covers electronics, books, stationery and gaming in KSA. Browse their website for current promotional offers, sale items and free shipping conditions.',type:'link',code:null,url:'https://jarir.com',exp:'2026-12-31'},
+  {id:'ksa04',brand:'eXtra KSA',icon:'⚡',ibg:'#FF4400',ic:'#fff',cat:'electronics',cc:['KSA'],disc:'Electronics Offers',strip:'',title:'eXtra — Electronics & Appliances Saudi Arabia',desc:'eXtra is a leading Saudi electronics chain. They run regular in-store and online promotions on TVs, mobiles, laptops and appliances. Check their website for current deals.',type:'link',code:null,url:'https://extra.com',exp:'2026-12-31'},
+  {id:'ksa05',brand:'Talabat KSA',icon:'🍔',ibg:'#FF6B00',ic:'#fff',cat:'food',cc:['KSA'],disc:'Food Delivery',strip:'',title:'Talabat Saudi Arabia — Food Delivery Offers',desc:'Talabat covers Riyadh, Jeddah and Dammam. Open the Talabat app to see currently active food delivery discount codes for Saudi Arabia customers.',type:'link',code:null,url:'https://talabat.com/sa',exp:'2026-12-31'},
+  {id:'ksa06',brand:'Careem KSA',icon:'🚗',ibg:'#2DBD6E',ic:'#fff',cat:'rides',cc:['KSA'],disc:'Ride Promotions',strip:'',title:'Careem KSA — Ride Offers in Saudi Cities',desc:'Careem operates in Riyadh, Jeddah, Dammam, Mecca and Medina. Check the Careem app Promotions section for currently available ride discount codes in Saudi Arabia.',type:'link',code:null,url:'https://careem.com',exp:'2026-12-31'},
+  {id:'ksa07',brand:'Max Fashion KSA',icon:'👔',ibg:'#D32F2F',ic:'#fff',cat:'fashion',cc:['KSA'],disc:'Fashion Sale',strip:'',title:'Max Fashion — Seasonal Sale Saudi Arabia',desc:'Max Fashion carries menswear, womenswear and kidswear across Saudi Arabia. They regularly run end-of-season sales. Check their website for current promotions.',type:'link',code:null,url:'https://maxfashion.com',exp:'2026-12-31'},
+  // KUWAIT
+  {id:'kw01',brand:'Talabat Kuwait',icon:'🍔',ibg:'#FF6B00',ic:'#fff',cat:'food',cc:['Kuwait'],disc:'App Offers',strip:'',title:'Talabat Kuwait — Food & Grocery Deals',desc:'Talabat covers Kuwait City and surrounding areas. Check the Talabat app for currently active discount codes and first-order offers for Kuwait.',type:'link',code:null,url:'https://talabat.com/kw',exp:'2026-12-31'},
+  {id:'kw02',brand:'Xcite Kuwait',icon:'📱',ibg:'#0057A8',ic:'#fff',cat:'electronics',cc:['Kuwait'],disc:'Electronics Deals',strip:'',title:'Xcite — Kuwait\'s Electronics & Tech Retailer',desc:'Xcite is Kuwait\'s leading electronics retailer offering mobiles, laptops and appliances. Browse their website for current promotions and special offers.',type:'link',code:null,url:'https://xcite.com',exp:'2026-12-31'},
+  {id:'kw03',brand:'Carrefour Kuwait',icon:'🏪',ibg:'#004A97',ic:'#fff',cat:'grocery',cc:['Kuwait'],disc:'Online Offers',strip:'new',title:'Carrefour Kuwait — Online Shopping Promotions',desc:'Carrefour Kuwait offers grocery, electronics and home goods delivery. Check their Kuwait website for current online-exclusive promotional offers.',type:'link',code:null,url:'https://carrefourkuwait.com',exp:'2026-12-31'},
+  // QATAR
+  {id:'qa01',brand:'Talabat Qatar',icon:'🍔',ibg:'#FF6B00',ic:'#fff',cat:'food',cc:['Qatar'],disc:'Food Delivery',strip:'',title:'Talabat Qatar — Doha Food Delivery Offers',desc:'Talabat covers restaurants and grocery across Doha and Al Wakrah. Open the Talabat app for currently available promo codes for Qatar customers.',type:'link',code:null,url:'https://talabat.com/qa',exp:'2026-12-31'},
+  {id:'qa02',brand:'Carrefour Qatar',icon:'🏪',ibg:'#004A97',ic:'#fff',cat:'grocery',cc:['Qatar'],disc:'Online Deals',strip:'',title:'Carrefour Qatar — Online-Exclusive Offers',desc:'Carrefour Qatar offers grocery and electronics delivery in Doha. Check their website for currently available online-exclusive promotions.',type:'link',code:null,url:'https://carrefour.qa',exp:'2026-12-31'},
+  {id:'qa03',brand:'Booking.com Qatar',icon:'🏨',ibg:'#003580',ic:'#fff',cat:'travel',cc:['Qatar'],disc:'Hotel Deals',strip:'offer',title:'Doha Hotels — Booking.com Member Discounts',desc:'Find competitive hotel rates in Doha and across Qatar. Booking.com Genius members receive additional discounts at participating properties. Sign up free to access member pricing.',type:'link',code:null,url:'https://booking.com',exp:'2026-12-31'},
+  // BAHRAIN
+  {id:'bh01',brand:'Noon Bahrain',icon:'🟡',ibg:'#FEEE00',ic:'#111',cat:'electronics',cc:['Bahrain'],disc:'App Offers',strip:'',title:'Noon Bahrain — Shopping Deals in Manama',desc:'Noon serves Bahrain with fast delivery. Check the Noon Bahrain app for currently active offers across electronics, fashion and grocery.',type:'link',code:null,url:'https://noon.com/bahrain-en',exp:'2026-12-31'},
+  {id:'bh02',brand:'Talabat Bahrain',icon:'🍔',ibg:'#FF6B00',ic:'#fff',cat:'food',cc:['Bahrain'],disc:'Food Delivery',strip:'',title:'Talabat Bahrain — Food & Grocery Delivery',desc:'Talabat delivers food and grocery across Manama and surrounding Bahrain areas. Check the app for currently available discount codes for Bahrain.',type:'link',code:null,url:'https://talabat.com/bh',exp:'2026-12-31'},
+  // OMAN
+  {id:'om01',brand:'Talabat Oman',icon:'🍔',ibg:'#FF6B00',ic:'#fff',cat:'food',cc:['Oman'],disc:'App Deals',strip:'',title:'Talabat Oman — Food Delivery in Muscat & Salalah',desc:'Talabat delivers across Muscat, Salalah and Sohar in Oman. Open the Talabat app for currently available promotional offers for Oman.',type:'link',code:null,url:'https://talabat.com/om',exp:'2026-12-31'},
+  {id:'om02',brand:'Noon Oman',icon:'🟡',ibg:'#FEEE00',ic:'#111',cat:'electronics',cc:['Oman'],disc:'Shopping Deals',strip:'new',title:'Noon Oman — Online Shopping Offers',desc:'Noon has expanded to Oman offering electronics, fashion and grocery delivery to Muscat. Check the Noon app for the Oman region to see currently active deals.',type:'link',code:null,url:'https://noon.com/oman-en',exp:'2026-12-31'},
+  // EGYPT
+  {id:'eg01',brand:'Noon Egypt',icon:'🟡',ibg:'#FEEE00',ic:'#111',cat:'electronics',cc:['Egypt'],disc:'Deals & Offers',strip:'',title:'Noon Egypt — Cairo & Alexandria Shopping',desc:'Noon Egypt offers electronics, fashion and home goods with delivery across Cairo, Giza and Alexandria. Visit the Noon Egypt website or app for current promotions.',type:'link',code:null,url:'https://noon.com/egypt-en',exp:'2026-12-31'},
+  {id:'eg02',brand:'Talabat Egypt',icon:'🍔',ibg:'#FF6B00',ic:'#fff',cat:'food',cc:['Egypt'],disc:'Food Delivery',strip:'new',title:'Talabat Egypt — Food Delivery Across Egypt',desc:'Talabat operates across Cairo, Giza and Alexandria. Check the app for currently available first-order and loyalty discount offers for Egypt.',type:'link',code:null,url:'https://talabat.com/eg',exp:'2026-12-31'}
+];
+
+function getAdm(){try{return JSON.parse(localStorage.getItem('offprice_deals_v1')||'[]')}catch{return[]}}
+let AD=[...DEALS,...getAdm()],aC='all',aK='all',aQ='';
+const GCC={UAE:1,KSA:1,Kuwait:1,Qatar:1,Bahrain:1,Oman:1,Egypt:1};
+const FL={UAE:'🇦🇪',KSA:'🇸🇦',Kuwait:'🇰🇼',Qatar:'🇶🇦',Bahrain:'🇧🇭',Oman:'🇴🇲',Egypt:'🇪🇬',GCC:'🌐'};
+function mC(d,c){if(c==='all')return true;if(d.cc.includes('GCC'))return!!GCC[c]||true;return d.cc.includes(c)}
+function mK(d,k){return k==='all'||d.cat===k}
+function mQ(d,q){if(!q)return true;return(d.brand+' '+d.title+' '+d.desc+' '+d.cat+' '+d.cc.join(' ')).toLowerCase().includes(q)}
+function render(){
+  const f=AD.filter(d=>mC(d,aC)&&mK(d,aK)&&mQ(d,aQ));
+  const g=document.getElementById('dg'),nr=document.getElementById('nr');
+  document.getElementById('dc').textContent=f.length+' deal'+(f.length!==1?'s':'')+' found';
+  if(!f.length){g.innerHTML='';nr.style.display='';return}
+  nr.style.display='none';
+  g.innerHTML=f.map((d,i)=>{
+    const flags=d.cc.map(c=>`<span class="cbadge">${FL[c]||'🌍'} ${c==='GCC'?'All GCC':c}</span>`).join('');
+    const stripCls=d.strip||'none';
+    const stripTxt={hot:'🔥 Popular Deal',new:'✨ Newly Listed',off:'⭐ Highlighted Offer'}[stripCls]||'';
+    const codeHtml=d.type==='code'&&d.code
+      ?`<div class="clbl">Promo Code (Unverified — check at checkout)</div>
+         <div class="mrow"><div class="mtxt">••••••••</div><button class="rbtn" onclick="openModal('${d.id}')">👁 Show Code</button></div>`
+      :`<div class="clbl">No code needed</div>
+         <a href="#" class="lbtn" onclick="openModal('${d.id}');return false">🔗 View Deal &amp; Go to Store</a>`;
+    const expDisp=d.exp==='2026-12-31'?'📅 Ongoing — verify on brand\'s site':'📅 Listed until: '+d.exp;
+    const lbl=d.type==='code'?'Has Promo Code':'Link Deal';
+    return`<div class="card" style="animation-delay:${Math.min(i,7)*.04+.03}s">
+      <div class="strip ${stripCls}">${stripTxt}</div>
+      <div class="ch">
+        <div class="bicon" style="background:${d.ibg};color:${d.ic}">${d.icon}</div>
+        <div class="ci"><div class="bn">${d.brand}</div><div class="cr"><span class="cb">${d.cat}</span>${flags}</div></div>
+        <div class="db">${d.disc}</div>
+      </div>
+      <div class="cbody"><div class="ct">${d.title}</div><div class="cd">${d.desc}</div></div>
+      <div class="ccode">${codeHtml}</div>
+      <div class="cfoot"><div class="exp">${expDisp}</div><div class="ttag">${lbl}</div></div>
+    </div>`;
+  }).join('');
+  upCnt();
+}
+function upCnt(){
+  document.getElementById('c-all').textContent=AD.length;
+  ['UAE','KSA','Kuwait','Qatar','Bahrain','Oman','Egypt'].forEach(c=>{
+    const el=document.getElementById('c-'+c);if(el)el.textContent=AD.filter(d=>mC(d,c)).length;
+  });
+  const ge=document.getElementById('c-GCC');if(ge)ge.textContent=AD.filter(d=>d.cc.includes('GCC')).length;
+}
+function fC(c,btn){aC=c;document.querySelectorAll('.ctab').forEach(b=>b.classList.remove('act'));if(btn)btn.classList.add('act');render()}
+function fK(k,btn){aK=k;document.querySelectorAll('.cat').forEach(b=>b.classList.remove('act'));if(btn)btn.classList.add('act');render()}
+let st;function doSearch(){clearTimeout(st);st=setTimeout(()=>{aQ=document.getElementById('si').value.toLowerCase().trim();render()},200)}
+function ss(q){document.getElementById('si').value=q;aQ=q.toLowerCase();render();window.scrollTo({top:document.getElementById('deals').offsetTop-80,behavior:'smooth'})}
+/* MODAL */
+function openModal(id){
+  const d=AD.find(x=>x.id===id);if(!d)return;
+  const mi=document.getElementById('mIcon');mi.textContent=d.icon;mi.style.background=d.ibg;mi.style.color=d.ic;
+  document.getElementById('mBrand').textContent=d.brand;
+  document.getElementById('mTitle').textContent=d.title;
+  const sb=document.getElementById('mSB');sb.href=d.url;sb.textContent='Go to '+d.brand+' →';
+  if(d.type==='code'&&d.code){
+    document.getElementById('mHead').textContent='Your Promo Code';
+    document.getElementById('mCB').innerHTML=`<div class="mcb"><div class="mct">${d.code}</div><button class="mcp" id="mcp" onclick="cpCode('${d.code}')">📋 Copy</button></div><div style="font-size:.67rem;color:var(--mut);margin-bottom:8px;text-align:center">⚠️ Unverified — always check at checkout before purchasing.</div>`;
+    document.getElementById('mDisc').textContent='This code is listed as publicly reported. We do not guarantee its validity or terms. Always verify at the store before completing payment. OffPrice.me may receive a referral commission if you shop via this link.';
+  } else {
+    document.getElementById('mHead').textContent='Deal Information';
+    document.getElementById('mCB').innerHTML='<div class="mnoc">✅ No code needed — click the button below to go to the store. Any discount should apply automatically or is available on the brand\'s current offer page.</div>';
+    document.getElementById('mDisc').textContent='Discount availability may have changed. Always verify current offers on the brand\'s own website or app before purchasing. OffPrice.me may receive a referral commission if you shop via this link.';
+  }
+  document.getElementById('cm').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeM(){document.getElementById('cm').classList.remove('open');document.body.style.overflow=''}
+document.getElementById('cm').addEventListener('click',function(e){if(e.target===this)closeM()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeM()});
+function cpCode(c){navigator.clipboard.writeText(c).then(()=>{const b=document.getElementById('mcp');if(b){b.textContent='✓ Copied!';b.classList.add('ok');setTimeout(()=>{b.textContent='📋 Copy';b.classList.remove('ok')},2000)}const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500)})}
+function subNL(){const e=document.getElementById('nle').value;if(!e||!e.includes('@')){alert('Enter a valid email.');return}alert('Thank you! Deal alerts subscribed. You can unsubscribe anytime via our Privacy Policy.');document.getElementById('nle').value=''}
+/* COUNTDOWN */
+const ev=[{id:'cd1',d:new Date('2026-12-02')},{id:'cd2',d:new Date('2026-11-27')},{id:'cd3',d:new Date('2026-12-15')},{id:'cd4',d:new Date('2027-03-01')}];
+function tick(){const n=new Date();ev.forEach(e=>{const df=e.d-n;if(df<0)return;const da=Math.floor(df/86400000),h=Math.floor(df%86400000/3600000),m=Math.floor(df%3600000/60000),s=Math.floor(df%60000/1000);const el=document.getElementById(e.id);if(!el)return;el.innerHTML=`<div class="cdu"><span class="cdn">${String(da).padStart(2,'0')}</span><div class="cdl">Days</div></div><div class="cdu"><span class="cdn">${String(h).padStart(2,'0')}</span><div class="cdl">Hrs</div></div><div class="cdu"><span class="cdn">${String(m).padStart(2,'0')}</span><div class="cdl">Min</div></div><div class="cdu"><span class="cdn">${String(s).padStart(2,'0')}</span><div class="cdl">Sec</div></div>`})}
+tick();setInterval(tick,1000);render();
+/* ── THEME ── */
+(function(){const t=localStorage.getItem('op-theme');if(t==='light'){document.documentElement.classList.add('light');const b=document.getElementById('themeBtn');if(b)b.textContent='☀️'}})();
+function toggleTheme(){const L=document.documentElement.classList.toggle('light');localStorage.setItem('op-theme',L?'light':'dark');const b=document.getElementById('themeBtn');if(b)b.textContent=L?'☀️':'🌙'}
+</script>
+</div></body></html>

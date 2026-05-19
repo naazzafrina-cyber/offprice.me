@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OffPrice.me Admin Panel</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#09090F;--surface:#111119;--card:#15151F;--border:rgba(255,255,255,0.08);
+  --red:#E53E3E;--gold:#F0C040;--teal:#00C5C5;--green:#38B27A;--orange:#FF8C42;
+  --text:#F0F0F8;--dim:#888AA8;--muted:#3E3E5A;--r:10px;--rs:6px;
+  --sidebar-w:220px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text)}
+
+/* LOGIN */
+.login-screen{display:flex;align-items:center;justify-content:center;min-height:100vh;background:var(--bg)}
+.login-box{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:36px;width:340px;text-align:center}
+.login-logo{font-family:'Syne',sans-serif;font-size:1.5rem;margin-bottom:6px}.login-logo b{color:var(--red)}
+.login-sub{font-size:.82rem;color:var(--dim);margin-bottom:24px}
+.login-box input{width:100%;background:rgba(255,255,255,.06);border:1px solid var(--border);border-radius:var(--rs);padding:10px 14px;color:var(--text);font:400 .9rem 'Outfit',sans-serif;outline:none;margin-bottom:10px}
+.login-box input:focus{border-color:var(--red)}
+.login-box input::placeholder{color:var(--muted)}
+.btn{background:var(--red);border:none;border-radius:var(--rs);padding:10px 20px;font:700 .88rem 'Outfit',sans-serif;color:#fff;cursor:pointer;transition:background .15s}
+.btn:hover{background:#FC6161}.btn.full{width:100%}
+.btn.sec{background:var(--surface);border:1px solid var(--border);color:var(--dim)}
+.btn.sec:hover{border-color:var(--gold);color:var(--gold)}
+.btn.grn{background:var(--green)}.btn.grn:hover{background:#4AC789}
+.btn.gold{background:var(--gold);color:#000}.btn.gold:hover{background:#FFD760}
+.err{color:var(--red);font-size:.8rem;margin-top:6px;display:none}
+
+/* LAYOUT */
+.admin-app{display:none;min-height:100vh;flex-direction:row}
+.sidebar{width:var(--sidebar-w);background:var(--surface);border-right:1px solid var(--border);display:flex;flex-direction:column;position:fixed;top:0;bottom:0;left:0;z-index:10}
+.sb-logo{padding:18px 16px;border-bottom:1px solid var(--border);font-family:'Syne',sans-serif;font-size:1.1rem}.sb-logo b{color:var(--red)}
+.sb-role{font-size:.7rem;color:var(--dim);font-weight:500}
+.sb-nav{flex:1;padding:10px 8px;overflow-y:auto}
+.nav-item{display:flex;align-items:center;gap:9px;padding:9px 10px;border-radius:var(--rs);color:var(--dim);font-size:.84rem;font-weight:500;cursor:pointer;transition:all .15s;margin-bottom:2px}
+.nav-item:hover{background:rgba(255,255,255,.05);color:var(--text)}
+.nav-item.active{background:rgba(229,62,62,.12);color:var(--red-light,#FC8B8B)}
+.nav-icon{font-size:1rem;width:22px;text-align:center}
+.sb-footer{padding:14px 16px;border-top:1px solid var(--border)}
+.sb-footer button{width:100%;background:transparent;border:1px solid var(--border);border-radius:var(--rs);padding:7px;color:var(--dim);font:500 .78rem 'Outfit',sans-serif;cursor:pointer;transition:all .15s}
+.sb-footer button:hover{border-color:var(--red);color:var(--red)}
+.main-content{margin-left:var(--sidebar-w);flex:1;padding:24px;min-height:100vh;overflow-y:auto}
+
+/* TOP BAR */
+.top-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
+.page-title{font-family:'Syne',sans-serif;font-size:1.4rem;color:var(--text)}
+.page-sub{font-size:.8rem;color:var(--dim);margin-top:2px}
+.top-actions{display:flex;gap:8px;align-items:center}
+
+/* STATS */
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px}
+.stat-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:16px}
+.stat-card h4{font-size:.75rem;color:var(--dim);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px;font-weight:600}
+.stat-card .num{font-family:'Syne',sans-serif;font-size:1.8rem;color:var(--text)}
+.stat-card .chg{font-size:.74rem;color:var(--green);margin-top:4px}
+
+/* PANELS */
+.panel{display:none}
+.panel.active{display:block}
+
+/* TABLE */
+.table-wrap{background:var(--card);border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
+.table-head{padding:14px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.table-head h3{font-size:.92rem;font-weight:700;color:var(--text)}
+table{width:100%;border-collapse:collapse}
+th{background:var(--surface);padding:10px 14px;text-align:left;font-size:.74rem;font-weight:700;color:var(--dim);text-transform:uppercase;letter-spacing:.4px;white-space:nowrap}
+td{padding:10px 14px;border-bottom:1px solid rgba(255,255,255,.04);font-size:.82rem;color:var(--text);vertical-align:middle}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:rgba(255,255,255,.02)}
+.badge-country{display:inline-block;background:rgba(255,255,255,.07);border-radius:4px;padding:2px 6px;font-size:.68rem;margin:1px;font-weight:500;color:var(--dim)}
+.badge-cat{display:inline-block;background:rgba(229,62,62,.12);border-radius:4px;padding:2px 7px;font-size:.68rem;font-weight:600;color:#FC8B8B}
+.badge-code{font-family:'Courier New',monospace;background:rgba(240,192,64,.1);color:var(--gold);padding:2px 7px;border-radius:4px;font-size:.78rem;font-weight:700;letter-spacing:.5px}
+.action-btns{display:flex;gap:5px}
+.icon-btn{background:transparent;border:1px solid var(--border);border-radius:5px;padding:5px 9px;font-size:.76rem;cursor:pointer;color:var(--dim);transition:all .15s}
+.icon-btn:hover{border-color:var(--gold);color:var(--gold)}
+.icon-btn.del:hover{border-color:var(--red);color:var(--red)}
+.src-badge{display:inline-block;font-size:.68rem;padding:2px 7px;border-radius:50px;font-weight:700}
+.src-badge.builtin{background:rgba(0,197,197,.12);color:var(--teal)}
+.src-badge.admin{background:rgba(56,178,122,.12);color:var(--green)}
+.src-badge.imported{background:rgba(240,192,64,.12);color:var(--gold)}
+
+/* FORM */
+.form-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:22px}
+.form-card h3{font-family:'Syne',sans-serif;font-size:1rem;margin-bottom:18px;color:var(--text)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-grid.cols3{grid-template-columns:1fr 1fr 1fr}
+.form-full{grid-column:1/-1}
+label{display:block;font-size:.76rem;font-weight:600;color:var(--dim);text-transform:uppercase;letter-spacing:.4px;margin-bottom:5px}
+input[type="text"],input[type="url"],input[type="date"],select,textarea{
+  width:100%;background:rgba(255,255,255,.06);border:1px solid var(--border);
+  border-radius:var(--rs);padding:9px 12px;color:var(--text);
+  font:400 .86rem 'Outfit',sans-serif;outline:none;transition:border-color .15s
+}
+input:focus,select:focus,textarea:focus{border-color:var(--red)}
+input::placeholder,textarea::placeholder{color:var(--muted)}
+select option{background:var(--surface)}
+textarea{resize:vertical;min-height:70px}
+.form-group{display:flex;flex-direction:column}
+.helper{font-size:.72rem;color:var(--muted);margin-top:4px}
+.check-row{display:flex;align-items:center;gap:8px}
+.check-row input[type="checkbox"]{width:16px;height:16px;cursor:pointer}
+.preview-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--rs);padding:14px;margin-top:14px;display:none}
+.preview-card h4{font-size:.74rem;color:var(--dim);margin-bottom:8px;text-transform:uppercase;letter-spacing:.4px}
+.form-actions{display:flex;gap:10px;margin-top:18px;padding-top:14px;border-top:1px solid var(--border)}
+
+/* COUNTRIES MULTI */
+.country-checkboxes{display:flex;flex-wrap:wrap;gap:8px}
+.country-check{display:flex;align-items:center;gap:5px;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:5px;padding:5px 10px;cursor:pointer;transition:all .15s}
+.country-check input{cursor:pointer}
+.country-check:has(input:checked){background:rgba(229,62,62,.12);border-color:rgba(229,62,62,.3)}
+.country-check label{font-size:.78rem;font-weight:500;color:var(--dim);cursor:pointer}
+.country-check:has(input:checked) label{color:#FC8B8B}
+
+/* EXPORT */
+.export-box{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:22px;margin-bottom:16px}
+.export-box h3{font-family:'Syne',sans-serif;font-size:1rem;margin-bottom:10px;color:var(--text)}
+.export-box p{font-size:.83rem;color:var(--dim);line-height:1.6;margin-bottom:14px}
+.code-preview{background:var(--bg);border:1px solid var(--border);border-radius:var(--rs);padding:14px;font:400 .78rem 'Courier New',monospace;color:var(--gold);max-height:200px;overflow-y:auto;margin-bottom:12px;word-break:break-all}
+.step-list{counter-reset:steps;list-style:none;padding:0}
+.step-list li{counter-increment:steps;display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:.83rem;color:var(--dim);line-height:1.5}
+.step-list li:last-child{border-bottom:none}
+.step-list li::before{content:counter(steps);display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:24px;border-radius:50%;background:rgba(229,62,62,.12);border:1px solid rgba(229,62,62,.25);color:var(--red);font-size:.75rem;font-weight:700;flex-shrink:0}
+
+/* TOAST */
+.toast{position:fixed;bottom:20px;right:20px;background:var(--green);color:#fff;padding:10px 20px;border-radius:8px;font-size:.83rem;font-weight:600;z-index:999;transform:translateY(80px);transition:transform .3s;pointer-events:none}
+.toast.show{transform:translateY(0)}
+.toast.err-toast{background:var(--red)}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:200;display:none;align-items:center;justify-content:center}
+.modal-overlay.open{display:flex}
+.modal{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px;width:460px;max-width:95vw}
+.modal h3{font-family:'Syne',sans-serif;font-size:1.1rem;margin-bottom:8px;color:var(--text)}
+.modal p{font-size:.84rem;color:var(--dim);margin-bottom:20px;line-height:1.6}
+.modal-actions{display:flex;gap:10px;justify-content:flex-end}
+
+@media(max-width:768px){
+  .sidebar{width:100%;position:relative;flex-direction:row;flex-wrap:wrap;height:auto}
+  .main-content{margin-left:0}
+  .stats-row{grid-template-columns:1fr 1fr}
+  .form-grid,.form-grid.cols3{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div class="login-screen" id="loginScreen">
+  <div class="login-box">
+    <div class="login-logo"><b>Off</b>Price<span style="color:#888">.me</span></div>
+    <div class="login-sub">Admin Panel — Secure Login</div>
+    <input type="text" id="loginUser" placeholder="Username" autocomplete="username">
+    <input type="password" id="loginPass" placeholder="Password" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()">
+    <button class="btn full" onclick="doLogin()">Sign In</button>
+    <div class="err" id="loginErr">Incorrect username or password.</div>
+    <p style="font-size:.72rem;color:var(--muted);margin-top:14px">Default: admin / offprice2026 — Change in Settings</p>
+  </div>
+</div>
+
+<!-- ADMIN APP -->
+<div class="admin-app" id="adminApp">
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <div class="sb-logo"><b>Off</b>Price<span style="color:#888">.me</span><br><span class="sb-role">Admin Panel</span></div>
+    <div class="sb-nav">
+      <div class="nav-item active" onclick="showPanel('dashboard',this)"><span class="nav-icon">📊</span> Dashboard</div>
+      <div class="nav-item" onclick="showPanel('add',this)"><span class="nav-icon">➕</span> Add New Deal</div>
+      <div class="nav-item" onclick="showPanel('manage',this)"><span class="nav-icon">📋</span> Manage Deals</div>
+      <div class="nav-item" onclick="showPanel('export',this)"><span class="nav-icon">📤</span> Export & Deploy</div>
+      <div class="nav-item" onclick="showPanel('automation',this)"><span class="nav-icon">🤖</span> Automation Guide</div>
+      <div class="nav-item" onclick="showPanel('settings',this)"><span class="nav-icon">⚙️</span> Settings</div>
+      <div style="border-top:1px solid var(--border);margin:10px 0;padding-top:10px">
+        <div class="nav-item" onclick="window.open('index.html','_blank')"><span class="nav-icon">🌐</span> View Live Site</div>
+      </div>
+    </div>
+    <div class="sb-footer"><button onclick="doLogout()">🚪 Sign Out</button></div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="main-content">
+
+    <!-- DASHBOARD -->
+    <div class="panel active" id="panel-dashboard">
+      <div class="top-bar">
+        <div><div class="page-title">Dashboard</div><div class="page-sub">Welcome back, Admin! Here's your deal summary.</div></div>
+        <div class="top-actions">
+          <button class="btn" onclick="showPanel('add',document.querySelector('.nav-item:nth-child(2))'))">+ Add Deal</button>
+        </div>
+      </div>
+      <div class="stats-row" id="statsRow"></div>
+      <div class="table-wrap">
+        <div class="table-head"><h3>⚡ Recently Added Deals</h3><button class="btn sec" onclick="showPanel('manage',document.querySelector('.nav-item:nth-child(3)'))">View All →</button></div>
+        <div id="recentDeals"></div>
+      </div>
+    </div>
+
+    <!-- ADD DEAL -->
+    <div class="panel" id="panel-add">
+      <div class="top-bar">
+        <div><div class="page-title">Add New Deal</div><div class="page-sub">Fill in the details below. Fields marked * are required.</div></div>
+      </div>
+      <div class="form-card">
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Brand Name *</label>
+            <input type="text" id="f-brand" placeholder="e.g. Noon, Amazon UAE" oninput="updatePreview()">
+          </div>
+          <div class="form-group">
+            <label>Brand Icon (emoji)</label>
+            <input type="text" id="f-icon" placeholder="e.g. 🛒, 🍔, 🏨" value="🛍️" oninput="updatePreview()">
+          </div>
+          <div class="form-group">
+            <label>Icon Background Color</label>
+            <input type="text" id="f-iconBg" placeholder="#FF9900" value="#333" oninput="updatePreview()">
+          </div>
+          <div class="form-group">
+            <label>Icon Text Color</label>
+            <input type="text" id="f-iconColor" placeholder="#ffffff" value="#ffffff" oninput="updatePreview()">
+          </div>
+          <div class="form-group">
+            <label>Category *</label>
+            <select id="f-cat" onchange="updatePreview()">
+              <option value="food">🍔 Food & Delivery</option>
+              <option value="fashion">👗 Fashion</option>
+              <option value="electronics">📱 Electronics</option>
+              <option value="travel">✈️ Travel</option>
+              <option value="beauty">💄 Beauty</option>
+              <option value="grocery">🛒 Grocery</option>
+              <option value="rides">🚗 Rides</option>
+              <option value="kids">👶 Kids</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Discount Label *</label>
+            <input type="text" id="f-disc" placeholder="e.g. 20% OFF, AED 50 OFF" oninput="updatePreview()">
+          </div>
+        </div>
+
+        <div style="margin:14px 0">
+          <label>Valid Countries * (select all that apply)</label>
+          <div class="country-checkboxes">
+            <div class="country-check"><input type="checkbox" id="cc-GCC" value="GCC"><label for="cc-GCC">🌐 All GCC</label></div>
+            <div class="country-check"><input type="checkbox" id="cc-UAE" value="UAE"><label for="cc-UAE">🇦🇪 UAE</label></div>
+            <div class="country-check"><input type="checkbox" id="cc-KSA" value="KSA"><label for="cc-KSA">🇸🇦 KSA</label></div>
+            <div class="country-check"><input type="checkbox" id="cc-Kuwait" value="Kuwait"><label for="cc-Kuwait">🇰🇼 Kuwait</label></div>
+            <div class="country-check"><input type="checkbox" id="cc-Qatar" value="Qatar"><label for="cc-Qatar">🇶🇦 Qatar</label></div>
+            <div class="country-check"><input type="checkbox" id="cc-Bahrain" value="Bahrain"><label for="cc-Bahrain">🇧🇭 Bahrain</label></div>
+            <div class="country-check"><input type="checkbox" id="cc-Oman" value="Oman"><label for="cc-Oman">🇴🇲 Oman</label></div>
+            <div class="country-check"><input type="checkbox" id="cc-Egypt" value="Egypt"><label for="cc-Egypt">🇪🇬 Egypt</label></div>
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group form-full">
+            <label>Deal Title *</label>
+            <input type="text" id="f-title" placeholder="e.g. 20% Off Electronics – New Users Only" oninput="updatePreview()">
+          </div>
+          <div class="form-group form-full">
+            <label>Description *</label>
+            <textarea id="f-desc" placeholder="Describe the deal, conditions, minimum order, validity area..." oninput="updatePreview()"></textarea>
+          </div>
+          <div class="form-group">
+            <label>Promo Code (leave blank if no code needed)</label>
+            <input type="text" id="f-code" placeholder="e.g. SAVE20, WELCOME10" style="text-transform:uppercase" oninput="updatePreview()">
+            <div class="helper">Leave blank for "No code needed" auto-click deals</div>
+          </div>
+          <div class="form-group">
+            <label>Deal / Affiliate URL *</label>
+            <input type="url" id="f-url" placeholder="https://noon.com/uae-en/..." oninput="updatePreview()">
+          </div>
+          <div class="form-group">
+            <label>Expiry Date *</label>
+            <input type="date" id="f-expiry" oninput="updatePreview()">
+          </div>
+          <div class="form-group">
+            <label>Success Rate % (0–100)</label>
+            <input type="text" id="f-sr" placeholder="e.g. 85" value="80" oninput="updatePreview()">
+          </div>
+        </div>
+
+        <div style="margin:14px 0">
+          <label>Card Badge</label>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <div class="check-row"><input type="radio" name="badge" id="b-none" value="" checked><label for="b-none">None</label></div>
+            <div class="check-row"><input type="radio" name="badge" id="b-hot" value="hot"><label for="b-hot">🔥 HOT</label></div>
+            <div class="check-row"><input type="radio" name="badge" id="b-new" value="new-deal"><label for="b-new">✨ NEW</label></div>
+            <div class="check-row"><input type="radio" name="badge" id="b-ver" value="verified"><label for="b-ver">✓ VERIFIED</label></div>
+          </div>
+        </div>
+
+        <!-- PREVIEW -->
+        <div class="preview-card" id="dealPreview">
+          <h4>Preview</h4>
+          <div id="previewContent"></div>
+        </div>
+
+        <div class="form-actions">
+          <button class="btn" onclick="saveDeal()">💾 Save Deal</button>
+          <button class="btn sec" onclick="resetForm()">↺ Reset</button>
+          <button class="btn sec" onclick="document.getElementById('dealPreview').style.display='block';updatePreview()">👁 Preview</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MANAGE DEALS -->
+    <div class="panel" id="panel-manage">
+      <div class="top-bar">
+        <div><div class="page-title">Manage Deals</div><div class="page-sub" id="manageSubtitle">Loading...</div></div>
+        <div class="top-actions">
+          <input type="text" placeholder="Search deals..." style="background:var(--card);border:1px solid var(--border);border-radius:6px;padding:7px 12px;color:var(--text);font:400 .83rem 'Outfit',sans-serif;outline:none;width:200px" id="manageSearch" oninput="renderManageTable()">
+          <button class="btn grn" onclick="showPanel('add',document.querySelector('.nav-item:nth-child(2)'))">+ Add</button>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <div id="manageTableBody"></div>
+      </div>
+    </div>
+
+    <!-- EXPORT -->
+    <div class="panel" id="panel-export">
+      <div class="top-bar">
+        <div><div class="page-title">Export & Deploy</div><div class="page-sub">Publish your admin deals to the live site.</div></div>
+      </div>
+
+      <div class="export-box">
+        <h3>📋 How to Publish Admin Deals to GitHub Pages</h3>
+        <ul class="step-list">
+          <li>Click <strong>"Export deals.js"</strong> below to download your deals data file.</li>
+          <li>Go to your GitHub repository at <strong>github.com/yourusername/offprice</strong></li>
+          <li>Drag & drop the downloaded <code>deals-data.js</code> file into the repo root, commit it.</li>
+          <li>Your <strong>index.html</strong> already loads this file — all visitors will see your admin deals instantly.</li>
+          <li>Repeat whenever you update deals. The file replaces the old one automatically on GitHub.</li>
+        </ul>
+        <div style="display:flex;gap:10px;margin-top:16px">
+          <button class="btn gold" onclick="exportDeals()">⬇ Download deals-data.js</button>
+          <button class="btn sec" onclick="copyExportJSON()">📋 Copy JSON to Clipboard</button>
+          <button class="btn grn" onclick="importDeals()">📥 Import deals-data.js</button>
+        </div>
+      </div>
+
+      <div class="export-box">
+        <h3>👁 JSON Preview (Admin-Added Deals Only)</h3>
+        <p>This is the data that will be exported. Built-in deals are always in index.html — only your new admin-added deals appear here.</p>
+        <div class="code-preview" id="exportPreview">Loading...</div>
+        <button class="btn sec" onclick="refreshExportPreview()">↺ Refresh Preview</button>
+      </div>
+
+      <div class="export-box">
+        <h3>🗑️ Danger Zone</h3>
+        <p>Clear all admin-added deals. This cannot be undone. Built-in deals in index.html are not affected.</p>
+        <button class="btn" onclick="confirmClearAll()" style="background:#7B2020">🗑 Clear All Admin Deals</button>
+      </div>
+    </div>
+
+    <!-- AUTOMATION -->
+    <div class="panel" id="panel-automation">
+      <div class="top-bar"><div><div class="page-title">Automation & Earnings Guide</div><div class="page-sub">How to auto-update deals and earn affiliate income</div></div></div>
+
+      <div class="export-box">
+        <h3>🤖 Option 1 — GitHub Actions Auto-Update (Free)</h3>
+        <p>Create a Python scraper that pulls deals from affiliate APIs and auto-commits the deals-data.js to your GitHub repo every Monday morning.</p>
+        <div class="code-preview">
+# .github/workflows/update-deals.yml
+name: Weekly Deal Update
+on:
+  schedule:
+    - cron: '0 5 * * 1'   # Every Monday 5AM UTC (9AM GST)
+  workflow_dispatch:        # Also allows manual trigger
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with: {python-version: '3.11'}
+      - run: pip install requests admitad-api
+      - run: python scripts/fetch_deals.py
+      - run: |
+          git config user.email "bot@offprice.me"
+          git config user.name "OffPrice Bot"
+          git add deals-data.js
+          git diff --staged --quiet || git commit -m "Auto: Weekly deal refresh $(date +%Y-%m-%d)"
+          git push
+        </div>
+      </div>
+
+      <div class="export-box">
+        <h3>💰 Affiliate Programs to Join (GCC-Specific)</h3>
+        <ul class="step-list">
+          <li><strong>Admitad.ae</strong> — Join at admitad.com/ae — covers Noon, Namshi, 6th Street, iHerb, AliExpress, Careem, SHEIN, Centrepoint, Mumzworld, Max Fashion for UAE & KSA. Commission: 2–12% per sale.</li>
+          <li><strong>Amazon Associates UAE</strong> — affiliate-program.amazon.ae — earn 1–8% on Amazon.ae purchases. Use SiteStripe to generate tracking links directly in your browser.</li>
+          <li><strong>Amazon Associates KSA</strong> — affiliate-program.amazon.sa — separate program for Saudi Arabia. Same commission structure.</li>
+          <li><strong>Booking.com Affiliate</strong> — booking.com/affiliateprogram — earn 25–40% of Booking's commission on GCC hotel bookings. High CPM for Gulf hotels.</li>
+          <li><strong>iHerb Affiliate</strong> — iherb.com/info/affiliate — 5% recurring commissions on health and beauty for GCC customers.</li>
+          <li><strong>DCMnetwork.com</strong> — Amazon influencer codes for UAE/KSA. Good for social media cross-promotion.</li>
+          <li><strong>Jarir Affiliate (KSA)</strong> — Contact jarir.com directly. Electronics is highest-CPM niche in GCC affiliate market.</li>
+          <li><strong>Google AdSense</strong> — Apply at google.com/adsense after 3+ weeks live traffic. GCC CPM: $4–14 (highest globally for English content).</li>
+        </ul>
+      </div>
+
+      <div class="export-box">
+        <h3>📊 Estimated Monthly Earnings Model (offprice.me)</h3>
+        <div style="background:var(--bg);border:1px solid var(--border);border-radius:var(--rs);padding:16px;margin-bottom:14px">
+          <table style="width:100%">
+            <tr><th>Traffic</th><th>AdSense (CPM $8)</th><th>Affiliate (2% conv.)</th><th>Total/Month</th></tr>
+            <tr><td>5,000 visitors</td><td>$120–180</td><td>$80–150</td><td style="color:var(--green);font-weight:700">$200–330</td></tr>
+            <tr><td>20,000 visitors</td><td>$480–720</td><td>$300–600</td><td style="color:var(--green);font-weight:700">$780–1,320</td></tr>
+            <tr><td>100,000 visitors</td><td>$2,400–3,600</td><td>$1,500–3,000</td><td style="color:var(--green);font-weight:700">$3,900–6,600</td></tr>
+          </table>
+        </div>
+        <p style="font-size:.78rem;color:var(--muted)">Estimates based on GCC average CPM and 2% affiliate conversion on referred traffic. Actual results vary based on content, competition, and seasonal events.</p>
+      </div>
+
+      <div class="export-box">
+        <h3>🏦 How to Receive Money to UAE Bank Account</h3>
+        <ul class="step-list">
+          <li><strong>Google AdSense</strong> → Supports direct wire transfer to UAE banks (ADCB, Emirates NBD, Mashreq, FAB, etc.). Set up in AdSense → Payments → Payment method → Add bank account. Minimum payout: $100 USD. Paid monthly.</li>
+          <li><strong>Admitad.ae</strong> → Pays via PayPal, wire transfer, or Payoneer. Open a Payoneer account (free), link it to Admitad, then withdraw to your UAE bank. Payoneer → UAE bank transfer is free above $1,000.</li>
+          <li><strong>Amazon Associates UAE/KSA</strong> → Pays via direct bank transfer or Amazon gift cards. UAE bank account accepted. Minimum: AED 200 or SAR 100.</li>
+          <li><strong>Booking.com</strong> → Pays monthly via bank transfer in USD. Your UAE bank account (held in USD or AED) receives it. Use SWIFT/IBAN of your UAE bank.</li>
+          <li><strong>Payoneer</strong> → Recommended as a universal withdrawal layer. Receive from any affiliate program globally, then transfer to Emirates NBD / ADCB / FAB — typically 1–3 business days, minimal fees.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SETTINGS -->
+    <div class="panel" id="panel-settings">
+      <div class="top-bar"><div><div class="page-title">Settings</div><div class="page-sub">Manage your admin credentials and site preferences</div></div></div>
+
+      <div class="form-card" style="max-width:500px;margin-bottom:16px">
+        <h3>🔑 Change Login Credentials</h3>
+        <div class="form-group" style="margin-bottom:12px">
+          <label>Current Password</label>
+          <input type="password" id="currPass" placeholder="Current password">
+        </div>
+        <div class="form-group" style="margin-bottom:12px">
+          <label>New Username</label>
+          <input type="text" id="newUser" placeholder="New username">
+        </div>
+        <div class="form-group" style="margin-bottom:12px">
+          <label>New Password</label>
+          <input type="password" id="newPass" placeholder="Min 8 characters">
+        </div>
+        <button class="btn" onclick="changeCredentials()">Update Credentials</button>
+      </div>
+
+      <div class="form-card" style="max-width:500px;margin-bottom:16px">
+        <h3>🌐 Site Configuration</h3>
+        <div class="form-group" style="margin-bottom:12px">
+          <label>AdSense Publisher ID</label>
+          <input type="text" id="adsenseId" placeholder="ca-pub-XXXXXXXXXXXXXXXX">
+          <div class="helper">Enter your Google AdSense publisher ID to activate ads</div>
+        </div>
+        <div class="form-group" style="margin-bottom:12px">
+          <label>Site Domain</label>
+          <input type="text" id="siteDomain" placeholder="offprice.me" value="offprice.me">
+        </div>
+        <button class="btn grn" onclick="saveSettings()">Save Settings</button>
+      </div>
+
+      <div class="form-card" style="max-width:500px">
+        <h3>ℹ️ Admin Info</h3>
+        <div id="adminInfo" style="font-size:.83rem;color:var(--dim);line-height:1.8"></div>
+      </div>
+    </div>
+
+  </div><!-- /main-content -->
+</div><!-- /admin-app -->
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <h3 id="modalTitle">Confirm</h3>
+    <p id="modalBody">Are you sure?</p>
+    <div class="modal-actions">
+      <button class="btn sec" onclick="closeModal()">Cancel</button>
+      <button class="btn" id="modalConfirm" onclick="">Confirm</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast">Saved!</div>
+
+<script>
+// ===== AUTH =====
+const DEFAULT_CREDS={user:'admin',pass:'offprice2026'};
+function getCreds(){try{return JSON.parse(localStorage.getItem('offprice_creds')||JSON.stringify(DEFAULT_CREDS))}catch{return DEFAULT_CREDS}}
+
+function doLogin(){
+  const u=document.getElementById('loginUser').value.trim();
+  const p=document.getElementById('loginPass').value;
+  const c=getCreds();
+  if(u===c.user&&p===c.pass){
+    localStorage.setItem('offprice_session','1');
+    document.getElementById('loginScreen').style.display='none';
+    document.getElementById('adminApp').style.display='flex';
+    initAdmin();
+  } else {
+    document.getElementById('loginErr').style.display='block';
+    setTimeout(()=>document.getElementById('loginErr').style.display='none',3000);
+  }
+}
+
+function doLogout(){localStorage.removeItem('offprice_session');location.reload()}
+
+window.addEventListener('load',()=>{
+  if(localStorage.getItem('offprice_session')==='1'){
+    document.getElementById('loginScreen').style.display='none';
+    document.getElementById('adminApp').style.display='flex';
+    initAdmin();
+  }
+});
+
+// ===== DATA =====
+function getDeals(){try{return JSON.parse(localStorage.getItem('offprice_deals_v1')||'[]')}catch{return[]}}
+function saveDeals(arr){localStorage.setItem('offprice_deals_v1',JSON.stringify(arr))}
+
+// Built-in count (approximate)
+const BUILTIN_COUNT=30;
+
+// ===== PANELS =====
+function showPanel(id,btn){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('panel-'+id).classList.add('active');
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  if(btn)btn.classList.add('active');
+  if(id==='dashboard')renderDashboard();
+  if(id==='manage')renderManageTable();
+  if(id==='export')refreshExportPreview();
+  if(id==='settings')renderSettings();
+}
+
+// ===== DASHBOARD =====
+function initAdmin(){renderDashboard();setDefaultExpiry()}
+
+function renderDashboard(){
+  const deals=getDeals();
+  const now=new Date();
+  const active=deals.filter(d=>new Date(d.expiry)>now);
+  const cats=[...new Set(deals.map(d=>d.cat))];
+  document.getElementById('statsRow').innerHTML=`
+    <div class="stat-card"><h4>Total Admin Deals</h4><div class="num">${deals.length}</div><div class="chg">+ ${BUILTIN_COUNT} built-in</div></div>
+    <div class="stat-card"><h4>Active (Not Expired)</h4><div class="num">${active.length}</div><div class="chg" style="color:var(--green)">✓ Valid</div></div>
+    <div class="stat-card"><h4>Categories</h4><div class="num">${cats.length||'—'}</div><div class="chg">${cats.join(', ')||'None yet'}</div></div>
+    <div class="stat-card"><h4>Countries Covered</h4><div class="num">${getCountryCoverage()}</div><div class="chg">GCC + Egypt</div></div>
+  `;
+  const recent=deals.slice(-5).reverse();
+  document.getElementById('recentDeals').innerHTML=recent.length
+    ?renderTable(recent,false)
+    :'<div style="padding:40px;text-align:center;color:var(--dim);font-size:.85rem">No admin deals yet. <a href="#" onclick="showPanel(\'add\',null)" style="color:var(--red)">Add your first deal →</a></div>';
+}
+
+function getCountryCoverage(){
+  const deals=getDeals();
+  const s=new Set();
+  deals.forEach(d=>d.countries.forEach(c=>s.add(c)));
+  return s.size||'—';
+}
+
+// ===== MANAGE TABLE =====
+function renderManageTable(){
+  const deals=getDeals();
+  const q=document.getElementById('manageSearch')?.value.toLowerCase()||'';
+  const filtered=q?deals.filter(d=>(d.brand+d.title+d.code+d.cat).toLowerCase().includes(q)):deals;
+  document.getElementById('manageSubtitle').textContent=`${filtered.length} admin-added deals (+ ${BUILTIN_COUNT} built-in in index.html)`;
+  document.getElementById('manageTableBody').innerHTML=filtered.length
+    ?renderTable(filtered,true)
+    :'<div style="padding:40px;text-align:center;color:var(--dim)">No deals match. <a href="#" onclick="showPanel(\'add\',null)" style="color:var(--red)">Add one →</a></div>';
+}
+
+function renderTable(deals,showActions){
+  return`<table>
+    <thead><tr><th>Brand</th><th>Title</th><th>Code</th><th>Countries</th><th>Category</th><th>Expiry</th><th>Source</th>${showActions?'<th>Actions</th>':''}</tr></thead>
+    <tbody>${deals.map(d=>`<tr>
+      <td><strong>${d.brand}</strong></td>
+      <td style="max-width:180px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${d.title}</td>
+      <td>${d.code?`<span class="badge-code">${d.code}</span>`:'<span style="color:var(--muted)">No code</span>'}</td>
+      <td>${(d.countries||[]).map(c=>`<span class="badge-country">${c}</span>`).join('')}</td>
+      <td><span class="badge-cat">${d.cat}</span></td>
+      <td style="color:${new Date(d.expiry)<new Date()?'var(--red)':'var(--green)'}">${d.expiry}</td>
+      <td><span class="src-badge ${d.source||'admin'}">${d.source||'admin'}</span></td>
+      ${showActions?`<td><div class="action-btns"><button class="icon-btn" onclick="editDeal('${d.id}')">✏ Edit</button><button class="icon-btn del" onclick="deleteDeal('${d.id}')">🗑 Del</button></div></td>`:''}
+    </tr>`).join('')}</tbody>
+  </table>`;
+}
+
+// ===== ADD/EDIT DEAL =====
+function setDefaultExpiry(){
+  const d=new Date();d.setMonth(d.getMonth()+1);
+  document.getElementById('f-expiry').value=d.toISOString().split('T')[0];
+}
+
+let editingId=null;
+
+function saveDeal(){
+  const brand=document.getElementById('f-brand').value.trim();
+  const title=document.getElementById('f-title').value.trim();
+  const desc=document.getElementById('f-desc').value.trim();
+  const url=document.getElementById('f-url').value.trim();
+  const expiry=document.getElementById('f-expiry').value;
+  const countries=[...document.querySelectorAll('.country-check input:checked')].map(i=>i.value);
+  if(!brand||!title||!desc||!url||!expiry||!countries.length){
+    toast('Please fill in all required fields and select at least one country.','err');return;
+  }
+  const deal={
+    id:editingId||'deal_'+Date.now(),
+    brand,icon:document.getElementById('f-icon').value||'🛍️',
+    iconBg:document.getElementById('f-iconBg').value||'#333',
+    iconColor:document.getElementById('f-iconColor').value||'#fff',
+    cat:document.getElementById('f-cat').value,
+    countries,disc:document.getElementById('f-disc').value||'Deal',
+    title,desc,
+    code:document.getElementById('f-code').value.trim().toUpperCase()||null,
+    url,expiry,
+    sr:parseInt(document.getElementById('f-sr').value)||80,
+    badge:document.querySelector('input[name="badge"]:checked').value,
+    source:'admin'
+  };
+  const deals=getDeals();
+  if(editingId){
+    const idx=deals.findIndex(d=>d.id===editingId);
+    if(idx>-1)deals[idx]=deal;
+    editingId=null;
+  } else {
+    deals.push(deal);
+  }
+  saveDeals(deals);
+  toast('Deal saved! ✓ Visible on site immediately.');
+  resetForm();
+}
+
+function resetForm(){
+  ['f-brand','f-icon','f-iconBg','f-iconColor','f-disc','f-title','f-desc','f-code','f-url','f-sr'].forEach(id=>{
+    const el=document.getElementById(id);if(el)el.value='';
+  });
+  document.getElementById('f-icon').value='🛍️';
+  document.getElementById('f-iconBg').value='#333';
+  document.getElementById('f-iconColor').value='#ffffff';
+  document.getElementById('f-sr').value='80';
+  document.getElementById('f-cat').value='food';
+  document.querySelectorAll('.country-check input').forEach(i=>i.checked=false);
+  document.querySelector('input[name="badge"][value=""]').checked=true;
+  document.getElementById('dealPreview').style.display='none';
+  setDefaultExpiry();editingId=null;
+}
+
+function editDeal(id){
+  const d=getDeals().find(x=>x.id===id);if(!d)return;
+  editingId=id;
+  document.getElementById('f-brand').value=d.brand;
+  document.getElementById('f-icon').value=d.icon;
+  document.getElementById('f-iconBg').value=d.iconBg;
+  document.getElementById('f-iconColor').value=d.iconColor;
+  document.getElementById('f-cat').value=d.cat;
+  document.getElementById('f-disc').value=d.disc;
+  document.getElementById('f-title').value=d.title;
+  document.getElementById('f-desc').value=d.desc;
+  document.getElementById('f-code').value=d.code||'';
+  document.getElementById('f-url').value=d.url;
+  document.getElementById('f-expiry').value=d.expiry;
+  document.getElementById('f-sr').value=d.sr;
+  document.querySelectorAll('.country-check input').forEach(i=>i.checked=d.countries.includes(i.value));
+  const rb=document.querySelector(`input[name="badge"][value="${d.badge||'']"`);if(rb)rb.checked=true;
+  showPanel('add',document.querySelectorAll('.nav-item')[1]);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function deleteDeal(id){
+  showModal('Delete Deal','Are you sure you want to delete this deal? This cannot be undone.',()=>{
+    const d=getDeals().filter(x=>x.id!==id);saveDeals(d);
+    closeModal();renderManageTable();toast('Deal deleted.');
+  });
+}
+
+// ===== PREVIEW =====
+function updatePreview(){
+  const prev=document.getElementById('previewContent');if(!prev)return;
+  const brand=document.getElementById('f-brand').value||'Brand';
+  const disc=document.getElementById('f-disc').value||'OFF';
+  const title=document.getElementById('f-title').value||'Deal Title';
+  const code=document.getElementById('f-code').value;
+  const iconBg=document.getElementById('f-iconBg').value||'#333';
+  const iconColor=document.getElementById('f-iconColor').value||'#fff';
+  const icon=document.getElementById('f-icon').value||'🛍️';
+  prev.innerHTML=`<div style="background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:14px;max-width:280px">
+    <div style="display:flex;gap:10px;align-items:center;margin-bottom:10px">
+      <div style="width:40px;height:40px;border-radius:8px;background:${iconBg};color:${iconColor};display:flex;align-items:center;justify-content:center;font-size:1.2rem">${icon}</div>
+      <div><div style="font-weight:700;font-size:.9rem">${brand}</div></div>
+      <div style="margin-left:auto;background:rgba(229,62,62,.13);border:1px solid rgba(229,62,62,.25);color:#FC8B8B;font-size:.78rem;font-weight:700;padding:3px 8px;border-radius:6px">${disc}</div>
+    </div>
+    <div style="font-weight:600;font-size:.85rem;margin-bottom:6px">${title}</div>
+    ${code?`<div style="background:rgba(240,192,64,.07);border:1.5px dashed rgba(240,192,64,.3);border-radius:6px;padding:7px 10px;font-family:monospace;color:var(--gold);font-weight:700;font-size:.85rem">${code}</div>`:'<div style="color:var(--dim);font-size:.8rem">No code — auto-activate</div>'}
+  </div>`;
+}
+
+// ===== EXPORT =====
+function refreshExportPreview(){
+  const d=getDeals();
+  document.getElementById('exportPreview').textContent=d.length
+    ?JSON.stringify(d,null,2)
+    :'// No admin deals yet. Add deals above and they will appear here.';
+}
+
+function exportDeals(){
+  const d=getDeals();
+  const js=`// deals-data.js — Auto-generated by OffPrice.me Admin\n// Last updated: ${new Date().toLocaleDateString()}\n// Do NOT edit manually. Generate from Admin → Export & Deploy.\n\nif(typeof window!=='undefined'){\n  window.OFFPRICE_ADMIN_DEALS=${JSON.stringify(d,null,2)};\n}\n`;
+  const blob=new Blob([js],{type:'application/javascript'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='deals-data.js';a.click();
+  toast('Downloaded deals-data.js! Upload it to your GitHub repo.');
+}
+
+function copyExportJSON(){
+  navigator.clipboard.writeText(JSON.stringify(getDeals(),null,2)).then(()=>toast('JSON copied to clipboard!'));
+}
+
+function importDeals(){
+  const inp=document.createElement('input');inp.type='file';inp.accept='.js,.json';
+  inp.onchange=e=>{
+    const f=e.target.files[0];if(!f)return;
+    const r=new FileReader();
+    r.onload=ev=>{
+      try{
+        let txt=ev.target.result;
+        // Extract JSON array from .js file
+        const m=txt.match(/\[[\s\S]*\]/);
+        if(m){const arr=JSON.parse(m[0]);saveDeals(arr);toast(`Imported ${arr.length} deals!`);renderManageTable();}
+        else{toast('Could not parse file.','err')}
+      }catch{toast('Invalid file format.','err')}
+    };
+    r.readAsText(f);
+  };
+  inp.click();
+}
+
+function confirmClearAll(){
+  showModal('Clear All Admin Deals','This will permanently delete all admin-added deals from this browser. Built-in deals in index.html are unaffected.',()=>{
+    saveDeals([]);closeModal();toast('All admin deals cleared.');renderDashboard();
+  });
+}
+
+// ===== SETTINGS =====
+function renderSettings(){
+  const c=getCreds();
+  document.getElementById('adminInfo').innerHTML=`
+    <div>Current username: <strong style="color:var(--text)">${c.user}</strong></div>
+    <div>Session: <strong style="color:var(--green)">Active</strong></div>
+    <div>Admin deals stored: <strong style="color:var(--text)">${getDeals().length}</strong></div>
+    <div>Storage: localStorage (browser-local)</div>
+    <div>Version: OffPrice Admin v1.0 — May 2026</div>
+  `;
+}
+
+function changeCredentials(){
+  const curr=document.getElementById('currPass').value;
+  const newU=document.getElementById('newUser').value.trim();
+  const newP=document.getElementById('newPass').value;
+  const c=getCreds();
+  if(curr!==c.pass){toast('Current password incorrect.','err');return}
+  if(!newU||!newP){toast('Enter new username and password.','err');return}
+  if(newP.length<8){toast('Password must be at least 8 characters.','err');return}
+  localStorage.setItem('offprice_creds',JSON.stringify({user:newU,pass:newP}));
+  toast('Credentials updated! Remember to note your new login.');
+}
+
+function saveSettings(){toast('Settings saved.');}
+
+// ===== MODAL =====
+let modalCallback=null;
+function showModal(title,body,cb){
+  document.getElementById('modalTitle').textContent=title;
+  document.getElementById('modalBody').textContent=body;
+  document.getElementById('modalOverlay').classList.add('open');
+  modalCallback=cb;
+  document.getElementById('modalConfirm').onclick=cb;
+}
+function closeModal(){document.getElementById('modalOverlay').classList.remove('open')}
+
+// ===== TOAST =====
+function toast(msg,type=''){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.className='toast'+(type?' '+type+'-toast':'');
+  t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3200);
+}
+</script>
+</body>
+</html>

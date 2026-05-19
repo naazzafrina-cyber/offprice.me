@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OffPrice.me — Coming Soon | GCC's Best Deals Hub</title>
+<meta name="description" content="OffPrice.me is launching soon — your one-stop destination for the best deals, coupons and offers across UAE, Saudi Arabia, Kuwait, Qatar, Bahrain, Oman and Egypt.">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="OffPrice.me — Launching Soon">
+<meta property="og:description" content="GCC's best deals hub is coming. Sign up to be first to know.">
+<meta property="og:url" content="https://offprice.me/">
+<link rel="canonical" href="https://offprice.me/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ── VARIABLES ── */
+:root{
+  --bg:#09090F;--surf:#111119;--card:#15151F;--bdr:rgba(255,255,255,0.08);
+  --red:#E53E3E;--redl:#FC6161;--gold:#F0C040;--goldd:#C9952A;
+  --teal:#00C5C5;--grn:#38B27A;--org:#FF8C42;
+  --txt:#F0F0F8;--dim:#888AA8;--mut:#3E3E5A;
+  --r:14px;--rs:8px;
+  --sh:0 10px 40px rgba(0,0,0,.5);
+  --sh-sm:0 4px 16px rgba(0,0,0,.3);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--txt);min-height:100vh;overflow-x:hidden}
+
+/* ── LIGHT MODE ── */
+html.light{--bg:#F4F4FC;--surf:#FFFFFF;--card:#EAEAF4;--bdr:rgba(0,0,0,0.09);--txt:#1C1C30;--dim:#5A5A80;--mut:#9898B8;--red:#C53030;--redl:#E53E3E;--gold:#B8960A;--goldd:#956A06;--teal:#007878;--grn:#267A55;--org:#CC5500;--sh:0 10px 40px rgba(0,0,0,.14);--sh-sm:0 4px 16px rgba(0,0,0,.1)}
+html.light body{background:var(--bg)}
+html.light nav{background:rgba(244,244,252,.97)!important}
+html.light .bg-orbs{opacity:.5}
+html.light .cs-card{background:rgba(255,255,255,.85)}
+html.light .section-panel{background:var(--card)}
+html.light input,html.light textarea,html.light select{background:rgba(0,0,0,.05)!important;border-color:rgba(0,0,0,.12)!important;color:var(--txt)!important}
+html.light input::placeholder,html.light textarea::placeholder{color:var(--mut)!important}
+html.light .modal-bg{background:rgba(0,0,0,.5)!important}
+html.light .modal-box{background:#FFFFFF!important}
+html.light .stat-b{background:rgba(0,0,0,.05)!important;border-color:rgba(0,0,0,.1)!important}
+html.light .tbtn{border-color:rgba(0,0,0,.15)!important}
+html.light .nav-pill:hover{background:rgba(0,0,0,.06)!important}
+
+/* ── BG ORBS ── */
+.bg-orbs{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:.35}
+.orb1{width:500px;height:500px;background:radial-gradient(circle,rgba(229,62,62,.4),transparent 70%);top:-150px;left:-100px;animation:drift1 18s ease-in-out infinite alternate}
+.orb2{width:420px;height:420px;background:radial-gradient(circle,rgba(0,197,197,.3),transparent 70%);bottom:-120px;right:-80px;animation:drift2 22s ease-in-out infinite alternate}
+.orb3{width:280px;height:280px;background:radial-gradient(circle,rgba(240,192,64,.25),transparent 70%);top:40%;left:50%;transform:translate(-50%,-50%);animation:drift3 15s ease-in-out infinite alternate}
+@keyframes drift1{from{transform:translate(0,0) rotate(0deg)}to{transform:translate(60px,40px) rotate(10deg)}}
+@keyframes drift2{from{transform:translate(0,0) rotate(0deg)}to{transform:translate(-50px,30px) rotate(-8deg)}}
+@keyframes drift3{from{transform:translate(-50%,-50%) scale(1)}to{transform:translate(-50%,-50%) scale(1.3)}}
+
+/* ── NAV ── */
+nav{background:rgba(9,9,15,.95);backdrop-filter:blur(24px);border-bottom:1px solid var(--bdr);position:fixed;top:0;left:0;right:0;z-index:100;padding:0 24px}
+.nav-i{max-width:1080px;margin:0 auto;height:58px;display:flex;align-items:center;gap:12px}
+.logo{font-family:'Syne',sans-serif;font-size:1.38rem;color:var(--txt);text-decoration:none;flex-shrink:0}
+.logo b{color:var(--red)}.logo span{color:var(--dim);font-weight:700;font-size:.82rem}
+.nav-pills{display:flex;align-items:center;gap:4px;margin-left:auto}
+.nav-pill{color:var(--dim);text-decoration:none;font-size:.82rem;font-weight:500;padding:6px 12px;border-radius:8px;transition:all .2s;cursor:pointer;background:transparent;border:none;white-space:nowrap}
+.nav-pill:hover{color:var(--txt);background:rgba(255,255,255,.07)}
+.nav-pill.active{color:var(--gold);background:rgba(240,192,64,.1)}
+.nav-pill.cta{background:var(--red);color:#fff!important;font-weight:600;border-radius:8px}
+.nav-pill.cta:hover{background:var(--redl)}
+.tbtn{background:transparent;border:1px solid var(--bdr);border-radius:8px;padding:6px 9px;font-size:.88rem;cursor:pointer;color:var(--dim);line-height:1;transition:all .2s;flex-shrink:0}
+.tbtn:hover{border-color:var(--gold);color:var(--gold)}
+@media(max-width:600px){.nav-pill:not(.cta):not([onclick*="toggleTheme"]):not([onclick*="about"]){display:none}}
+
+/* ── HERO ── */
+.hero-wrap{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:90px 24px 60px;position:relative;z-index:1;text-align:center}
+
+/* Construction badge */
+.cs-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(229,62,62,.12);border:1px solid rgba(229,62,62,.28);border-radius:50px;padding:6px 18px;font-size:.73rem;font-weight:700;color:var(--redl);text-transform:uppercase;letter-spacing:.8px;margin-bottom:22px}
+.badge-dot{width:8px;height:8px;border-radius:50%;background:var(--grn);animation:pulse 2s ease infinite}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.4);opacity:.7}}
+
+/* Main headline */
+.hero-headline{font-family:'Syne',sans-serif;font-size:clamp(2.2rem,7vw,5rem);line-height:1.08;font-weight:900;margin-bottom:16px;letter-spacing:-1px}
+.hero-headline .line1{display:block;color:var(--txt)}
+.hero-headline .line2{display:block;background:linear-gradient(135deg,var(--red),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-headline .line3{display:block;color:var(--txt)}
+
+.hero-sub{font-size:clamp(.9rem,2vw,1.1rem);color:var(--dim);max-width:520px;line-height:1.7;margin:0 auto 30px}
+
+/* Country flags strip */
+.flags-strip{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:32px;font-size:1.6rem}
+.flag-item{display:flex;flex-direction:column;align-items:center;gap:3px}
+.flag-item span{font-size:.6rem;color:var(--mut);font-weight:600;text-transform:uppercase;letter-spacing:.3px}
+
+/* Glass card */
+.cs-card{background:rgba(255,255,255,.04);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:28px 32px;max-width:560px;width:100%;margin-bottom:32px}
+
+/* Countdown */
+.cd-title{font-size:.72rem;color:var(--dim);text-transform:uppercase;letter-spacing:.6px;font-weight:600;margin-bottom:14px}
+.cd-grid{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.cd-block{display:flex;flex-direction:column;align-items:center;gap:5px;min-width:64px}
+.cd-num{font-family:'Syne',sans-serif;font-size:2.2rem;font-weight:800;color:var(--txt);background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:10px;width:72px;height:64px;display:flex;align-items:center;justify-content:center;line-height:1;transition:transform .1s}
+.cd-num.tick{transform:scale(.95)}
+.cd-label{font-size:.62rem;color:var(--mut);text-transform:uppercase;letter-spacing:.5px;font-weight:600}
+.cd-sep{font-family:'Syne',sans-serif;font-size:2rem;color:var(--mut);align-self:flex-start;margin-top:14px}
+
+/* Newsletter in card */
+.cd-divider{height:1px;background:var(--bdr);margin:20px 0}
+.nl-form{display:flex;gap:8px;flex-wrap:wrap}
+.nl-inp{flex:1;min-width:180px;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.12);border-radius:var(--rs);padding:10px 14px;color:var(--txt);font:400 .87rem 'Outfit',sans-serif;outline:none;transition:border-color .2s}
+.nl-inp:focus{border-color:var(--red)}
+.nl-inp::placeholder{color:var(--mut)}
+.nl-btn{background:var(--red);border:none;border-radius:var(--rs);padding:10px 20px;color:#fff;font:700 .84rem 'Outfit',sans-serif;cursor:pointer;transition:background .2s;white-space:nowrap}
+.nl-btn:hover{background:var(--redl)}
+.nl-note{font-size:.68rem;color:var(--mut);margin-top:8px}
+.nl-note a{color:var(--dim);text-decoration:underline}
+
+/* Stats row */
+.stats-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:24px}
+.stat-b{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:12px;padding:14px 20px;text-align:center;min-width:110px}
+.stat-b .n{font-family:'Syne',sans-serif;font-size:1.5rem;color:var(--gold)}
+.stat-b .l{font-size:.67rem;color:var(--dim);text-transform:uppercase;letter-spacing:.4px;margin-top:3px}
+
+/* ── SECTION PANELS ── */
+.sections-wrap{max-width:820px;margin:0 auto;padding:0 24px 80px;position:relative;z-index:1}
+.section-panel{background:var(--card);border:1px solid var(--bdr);border-radius:20px;overflow:hidden;margin-bottom:20px;transition:all .3s}
+.panel-header{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;cursor:pointer;user-select:none}
+.panel-header h2{font-family:'Syne',sans-serif;font-size:1.1rem;color:var(--txt);display:flex;align-items:center;gap:10px}
+.panel-header .ph-icon{font-size:1.2rem}
+.panel-toggle{color:var(--dim);font-size:1.2rem;transition:transform .3s;flex-shrink:0}
+.panel-toggle.open{transform:rotate(180deg)}
+.panel-body{display:none;padding:0 22px 22px;animation:slideDown .25s ease}
+@keyframes slideDown{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+.panel-body.open{display:block}
+
+/* About content */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:14px}
+.about-feat{background:rgba(229,62,62,.07);border:1px solid rgba(229,62,62,.15);border-radius:10px;padding:14px}
+.about-feat h3{font-size:.88rem;font-weight:700;color:var(--txt);margin-bottom:5px;display:flex;align-items:center;gap:6px}
+.about-feat p{font-size:.78rem;color:var(--dim);line-height:1.6}
+.about-intro{font-size:.88rem;color:var(--dim);line-height:1.8;margin-bottom:14px}
+.team-note{background:rgba(240,192,64,.08);border:1px solid rgba(240,192,64,.18);border-radius:10px;padding:12px 16px;font-size:.8rem;color:var(--dim);line-height:1.6;margin-top:14px}
+.team-note strong{color:var(--gold)}
+
+/* Contact form */
+.contact-form{margin-top:14px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.form-group{display:flex;flex-direction:column;gap:5px;margin-bottom:12px}
+.form-group label{font-size:.73rem;font-weight:600;color:var(--dim);text-transform:uppercase;letter-spacing:.4px}
+.form-group input,.form-group textarea,.form-group select{background:rgba(255,255,255,.06);border:1.5px solid var(--bdr);border-radius:var(--rs);padding:10px 13px;color:var(--txt);font:400 .86rem 'Outfit',sans-serif;outline:none;transition:border-color .2s;width:100%}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--red)}
+.form-group input::placeholder,.form-group textarea::placeholder{color:var(--mut)}
+.form-group select option{background:var(--surf)}
+.form-group textarea{resize:vertical;min-height:110px}
+.form-submit{background:var(--red);border:none;border-radius:var(--rs);padding:12px 28px;color:#fff;font:700 .88rem 'Outfit',sans-serif;cursor:pointer;transition:background .2s;width:100%;margin-top:4px;display:flex;align-items:center;justify-content:center;gap:8px}
+.form-submit:hover{background:var(--redl)}
+.form-submit:disabled{opacity:.6;cursor:not-allowed}
+.form-note{font-size:.72rem;color:var(--mut);margin-top:8px;text-align:center;line-height:1.5}
+.form-note a{color:var(--dim)}
+.form-success{text-align:center;padding:24px;background:rgba(56,178,122,.08);border:1px solid rgba(56,178,122,.2);border-radius:12px;display:none}
+.form-success h3{font-family:'Syne',sans-serif;color:var(--grn);margin-bottom:6px}
+.form-success p{font-size:.84rem;color:var(--dim)}
+.form-error{background:rgba(229,62,62,.1);border:1px solid rgba(229,62,62,.2);border-radius:8px;padding:10px 14px;font-size:.8rem;color:var(--redl);margin-top:10px;display:none}
+
+/* Privacy link card */
+.priv-card{display:flex;align-items:center;gap:14px;background:rgba(240,192,64,.06);border:1px solid rgba(240,192,64,.18);border-radius:12px;padding:16px 20px;text-decoration:none;transition:all .2s;margin-top:14px}
+.priv-card:hover{background:rgba(240,192,64,.1);border-color:rgba(240,192,64,.3);transform:translateX(4px)}
+.priv-icon{font-size:1.8rem;flex-shrink:0}
+.priv-info h3{font-size:.92rem;font-weight:700;color:var(--txt);margin-bottom:2px}
+.priv-info p{font-size:.76rem;color:var(--dim);line-height:1.5}
+.priv-arrow{margin-left:auto;color:var(--gold);font-size:1.3rem;flex-shrink:0}
+
+/* ── FOOTER ── */
+.cs-footer{background:#07070D;border-top:1px solid var(--bdr);padding:20px 24px;text-align:center;position:relative;z-index:1}
+html.light .cs-footer{background:#E4E4F4}
+.cs-footer p{font-size:.72rem;color:var(--mut)}
+.cs-footer a{color:var(--dim);text-decoration:none}
+.cs-footer a:hover{color:var(--gold)}
+
+/* ── TOAST ── */
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--grn);color:#fff;padding:9px 20px;border-radius:50px;font-size:.82rem;font-weight:600;z-index:999;transition:transform .3s cubic-bezier(.34,1.56,.64,1);pointer-events:none}
+.toast.show{transform:translateX(-50%) translateY(0)}
+
+/* Responsive */
+@media(max-width:640px){.about-grid,.form-row{grid-template-columns:1fr}.cd-grid{gap:6px}.cd-num{width:60px;height:54px;font-size:1.9rem}.cs-card{padding:20px 18px}.hero-headline{font-size:clamp(1.9rem,8vw,3rem)}}
+</style>
+</head>
+<body>
+
+<!-- BACKGROUND ORBS -->
+<div class="bg-orbs">
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-i">
+    <a href="/" class="logo"><b>Off</b>Price<span>.me</span></a>
+    <div class="nav-pills">
+      <button class="nav-pill" onclick="toggleSection('about')">🏢 About</button>
+      <button class="nav-pill" onclick="toggleSection('contact')">✉️ Contact</button>
+      <a href="privacy.html" class="nav-pill">🔒 Privacy</a>
+      <a href="deals.html" class="nav-pill cta">🔥 See Deals</a>
+      <button class="tbtn" id="themeBtn" onclick="toggleTheme()" title="Toggle light/dark">🌙</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero-wrap">
+
+  <div class="cs-badge">
+    <span class="badge-dot"></span>
+    🚀 Website Under Construction
+  </div>
+
+  <h1 class="hero-headline">
+    <span class="line1">Get Ready For</span>
+    <span class="line2">OffPrice.me</span>
+    <span class="line3">GCC's Deal Hub</span>
+  </h1>
+
+  <p class="hero-sub">Your one-stop destination for the best deals, offers and discount codes across all GCC countries — UAE, Saudi Arabia, Kuwait, Qatar, Bahrain, Oman and Egypt.</p>
+
+  <!-- Country Flags -->
+  <div class="flags-strip">
+    <div class="flag-item">🇦🇪<span>UAE</span></div>
+    <div class="flag-item">🇸🇦<span>KSA</span></div>
+    <div class="flag-item">🇰🇼<span>Kuwait</span></div>
+    <div class="flag-item">🇶🇦<span>Qatar</span></div>
+    <div class="flag-item">🇧🇭<span>Bahrain</span></div>
+    <div class="flag-item">🇴🇲<span>Oman</span></div>
+    <div class="flag-item">🇪🇬<span>Egypt</span></div>
+  </div>
+
+  <!-- Countdown card -->
+  <div class="cs-card">
+    <div class="cd-title">🚀 Launching In</div>
+    <div class="cd-grid">
+      <div class="cd-block"><div class="cd-num" id="cd-d">00</div><div class="cd-label">Days</div></div>
+      <span class="cd-sep">:</span>
+      <div class="cd-block"><div class="cd-num" id="cd-h">00</div><div class="cd-label">Hours</div></div>
+      <span class="cd-sep">:</span>
+      <div class="cd-block"><div class="cd-num" id="cd-m">00</div><div class="cd-label">Mins</div></div>
+      <span class="cd-sep">:</span>
+      <div class="cd-block"><div class="cd-num" id="cd-s">00</div><div class="cd-label">Secs</div></div>
+    </div>
+
+    <div class="cd-divider"></div>
+    <div style="font-size:.8rem;color:var(--dim);margin-bottom:10px;font-weight:600">🔔 Be First to Know — Get Deal Alerts</div>
+    <div class="nl-form">
+      <input class="nl-inp" type="email" id="heroEmail" placeholder="your@email.com">
+      <button class="nl-btn" onclick="heroSubscribe()">Notify Me →</button>
+    </div>
+    <div class="nl-note">No spam. Unsubscribe anytime. See our <a href="privacy.html">Privacy Policy</a>.</div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-row">
+    <div class="stat-b"><div class="n">7</div><div class="l">GCC Countries</div></div>
+    <div class="stat-b"><div class="n">300+</div><div class="l">Brands Covered</div></div>
+    <div class="stat-b"><div class="n">Daily</div><div class="l">Deal Updates</div></div>
+    <div class="stat-b"><div class="n">Free</div><div class="l">Always</div></div>
+  </div>
+
+  <!-- Preview button -->
+  <a href="deals.html" style="display:inline-flex;align-items:center;gap:8px;background:transparent;border:1.5px solid var(--bdr);border-radius:50px;padding:10px 22px;color:var(--dim);text-decoration:none;font-size:.84rem;font-weight:500;transition:all .2s" onmouseover="this.style.borderColor='var(--gold)';this.style.color='var(--gold)'" onmouseout="this.style.borderColor='var(--bdr)';this.style.color='var(--dim)'">
+    Preview Current Deals →
+  </a>
+
+</div><!-- /hero-wrap -->
+
+<!-- SECTIONS -->
+<div class="sections-wrap">
+
+  <!-- ABOUT -->
+  <div class="section-panel" id="about-panel">
+    <div class="panel-header" onclick="toggleSection('about')">
+      <h2><span class="ph-icon">🏢</span> About OffPrice.me</h2>
+      <span class="panel-toggle" id="about-toggle">▼</span>
+    </div>
+    <div class="panel-body" id="about-body">
+      <p class="about-intro">OffPrice.me is a deal discovery and aggregation platform designed specifically for shoppers across the Gulf Cooperation Council (GCC) region. We list publicly available promotional codes, seasonal offers and deals from hundreds of brands — covering UAE, Saudi Arabia, Kuwait, Qatar, Bahrain, Oman and Egypt.</p>
+      <div class="about-grid">
+        <div class="about-feat">
+          <h3>🌍 GCC-First</h3>
+          <p>Built specifically for GCC shoppers — not a global site trying to cover every country. Every deal is region-relevant.</p>
+        </div>
+        <div class="about-feat">
+          <h3>📋 Informational</h3>
+          <p>We list publicly available deals for informational purposes. Always verify with the brand before purchasing.</p>
+        </div>
+        <div class="about-feat">
+          <h3>🆓 Always Free</h3>
+          <p>OffPrice.me is free to use. We may earn a small referral commission when you shop via our links — this helps fund the site.</p>
+        </div>
+        <div class="about-feat">
+          <h3>📱 Multi-Platform</h3>
+          <p>Works on mobile, tablet and desktop. Optimised for browsing on the go — in Arabic and English markets.</p>
+        </div>
+      </div>
+      <div class="team-note">
+        <strong>🇦🇪 UAE-Based Team</strong> — OffPrice.me is operated from the UAE. We're passionate about helping GCC consumers find the best value when shopping online. The site is a work in progress — we're constantly adding more deals, brands and features. Have a suggestion? Use the Contact form below!
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT FORM (Formspree) -->
+  <div class="section-panel" id="contact-panel">
+    <div class="panel-header" onclick="toggleSection('contact')">
+      <h2><span class="ph-icon">✉️</span> Contact Us</h2>
+      <span class="panel-toggle" id="contact-toggle">▼</span>
+    </div>
+    <div class="panel-body" id="contact-body">
+      <p style="font-size:.84rem;color:var(--dim);margin-bottom:16px;line-height:1.7">We'd love to hear from you — whether it's a deal suggestion, a broken link, a partnership inquiry, or just general feedback. Fill in the form below and we'll get back to you within 2–3 business days.</p>
+
+      <!-- 
+        FORMSPREE SETUP INSTRUCTIONS:
+        1. Go to https://formspree.io and create a FREE account
+        2. Click "+ New Form" and name it "OffPrice Contact"
+        3. Copy your form endpoint (looks like: https://formspree.io/f/xyzabc12)
+        4. Replace "YOUR_FORMSPREE_ID" below with your actual form ID (e.g. xyzabc12)
+        Free plan: 50 submissions/month. Upgrade for more.
+      -->
+      <form class="contact-form" id="contactForm" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" onsubmit="handleSubmit(event)">
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label>Your Name *</label>
+            <input type="text" name="name" placeholder="e.g. Ahmed Al Rashidi" required autocomplete="name">
+          </div>
+          <div class="form-group">
+            <label>Email Address *</label>
+            <input type="email" name="email" placeholder="your@email.com" required autocomplete="email">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Country</label>
+            <select name="country">
+              <option value="">Select Country</option>
+              <option>🇦🇪 UAE</option>
+              <option>🇸🇦 Saudi Arabia</option>
+              <option>🇰🇼 Kuwait</option>
+              <option>🇶🇦 Qatar</option>
+              <option>🇧🇭 Bahrain</option>
+              <option>🇴🇲 Oman</option>
+              <option>🇪🇬 Egypt</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Enquiry Type</label>
+            <select name="enquiry_type">
+              <option value="">Select Type</option>
+              <option>Deal Suggestion</option>
+              <option>Report a Broken Deal/Code</option>
+              <option>Partnership / Advertise</option>
+              <option>Technical Issue</option>
+              <option>General Feedback</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Subject *</label>
+          <input type="text" name="subject" placeholder="e.g. Suggestion for new brand deal" required>
+        </div>
+
+        <div class="form-group">
+          <label>Message *</label>
+          <textarea name="message" placeholder="Tell us your deal suggestion, feedback, or question in detail..." required></textarea>
+        </div>
+
+        <!-- Honeypot (anti-spam) -->
+        <input type="text" name="_gotcha" style="display:none">
+        <!-- Redirect after submit (optional — Formspree default) -->
+        <input type="hidden" name="_subject" value="New enquiry from OffPrice.me">
+
+        <button type="submit" class="form-submit" id="submitBtn">
+          <span id="submitText">📨 Send Message</span>
+        </button>
+
+        <div class="form-success" id="formSuccess">
+          <h3>✅ Message Sent!</h3>
+          <p>Thank you for reaching out. We'll get back to you within 2–3 business days at the email you provided.</p>
+        </div>
+        <div class="form-error" id="formError">
+          ⚠️ Something went wrong. Please try again, or email us directly at <strong>hello@offprice.me</strong>
+        </div>
+
+        <p class="form-note">
+          By submitting this form you agree to our <a href="privacy.html#privacy">Privacy Policy</a>. Your details are used only to respond to your enquiry and are not shared with third parties.
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <!-- PRIVACY POLICY LINK -->
+  <div class="section-panel">
+    <div class="panel-header" onclick="window.location='privacy.html'">
+      <h2><span class="ph-icon">🔒</span> Privacy, Terms & Legal</h2>
+      <span class="panel-toggle">›</span>
+    </div>
+    <div style="padding:0 22px 20px">
+      <a href="privacy.html" class="priv-card">
+        <span class="priv-icon">📄</span>
+        <div class="priv-info">
+          <h3>Read Our Full Privacy Policy</h3>
+          <p>Covers: Deal disclaimer · Terms of use · Affiliate disclosure · Cookie policy · AdSense · Newsletter · GCC regulatory compliance · Contact information</p>
+        </div>
+        <span class="priv-arrow">›</span>
+      </a>
+      <a href="privacy.html#affiliate" class="priv-card" style="margin-top:10px">
+        <span class="priv-icon">💰</span>
+        <div class="priv-info">
+          <h3>Affiliate Link Disclosure</h3>
+          <p>Some links on OffPrice.me may earn us a referral commission at no cost to you. Read our full affiliate disclosure for details.</p>
+        </div>
+        <span class="priv-arrow">›</span>
+      </a>
+    </div>
+  </div>
+
+</div><!-- /sections-wrap -->
+
+<!-- FOOTER -->
+<div class="cs-footer">
+  <p>© 2026 OffPrice.me — All rights reserved · <a href="deals.html">Deals</a> · <a href="privacy.html">Privacy</a> · <a href="#" onclick="toggleSection('contact')">Contact</a> · <a href="admin.html">Admin</a><br>
+  Deals listed for informational purposes only. Always verify with the retailer before purchasing.</p>
+</div>
+
+<div class="toast" id="toast">✓ Done!</div>
+
+<script>
+/* ── THEME ── */
+(function(){
+  const t=localStorage.getItem('op-theme');
+  if(t==='light'){document.documentElement.classList.add('light');const b=document.getElementById('themeBtn');if(b)b.textContent='☀️'}
+})();
+function toggleTheme(){
+  const L=document.documentElement.classList.toggle('light');
+  localStorage.setItem('op-theme',L?'light':'dark');
+  const b=document.getElementById('themeBtn');if(b)b.textContent=L?'☀️':'🌙';
+}
+
+/* ── COUNTDOWN ── Launches 1 September 2026 ── */
+const LAUNCH=new Date('2026-09-01T00:00:00');
+let prevSec=-1;
+function tick(){
+  const now=new Date();
+  const diff=LAUNCH-now;
+  if(diff<=0){
+    document.getElementById('cd-d').textContent='00';
+    document.getElementById('cd-h').textContent='00';
+    document.getElementById('cd-m').textContent='00';
+    document.getElementById('cd-s').textContent='00';
+    return;
+  }
+  const d=Math.floor(diff/86400000);
+  const h=Math.floor(diff%86400000/3600000);
+  const m=Math.floor(diff%3600000/60000);
+  const s=Math.floor(diff%60000/1000);
+  document.getElementById('cd-d').textContent=String(d).padStart(2,'0');
+  document.getElementById('cd-h').textContent=String(h).padStart(2,'0');
+  document.getElementById('cd-m').textContent=String(m).padStart(2,'0');
+  const sEl=document.getElementById('cd-s');
+  if(s!==prevSec){
+    sEl.classList.add('tick');
+    setTimeout(()=>sEl.classList.remove('tick'),100);
+    prevSec=s;
+  }
+  sEl.textContent=String(s).padStart(2,'0');
+}
+tick();setInterval(tick,1000);
+
+/* ── SECTIONS TOGGLE ── */
+function toggleSection(id){
+  const body=document.getElementById(id+'-body');
+  const toggle=document.getElementById(id+'-toggle');
+  if(!body)return;
+  const isOpen=body.classList.contains('open');
+  body.classList.toggle('open',!isOpen);
+  if(toggle)toggle.classList.toggle('open',!isOpen);
+  if(!isOpen){
+    setTimeout(()=>document.getElementById(id+'-panel').scrollIntoView({behavior:'smooth',block:'start'}),50);
+  }
+}
+/* Auto-open if nav link was clicked (hash param) */
+window.addEventListener('load',()=>{
+  const hash=location.hash.replace('#','');
+  if(hash==='about'||hash==='contact')toggleSection(hash);
+});
+
+/* ── CONTACT FORM (Formspree) ── */
+async function handleSubmit(e){
+  e.preventDefault();
+  const btn=document.getElementById('submitBtn');
+  const txt=document.getElementById('submitText');
+  const form=document.getElementById('contactForm');
+  const success=document.getElementById('formSuccess');
+  const error=document.getElementById('formError');
+  
+  /* Check Formspree ID is set */
+  if(form.action.includes('YOUR_FORMSPREE_ID')){
+    error.style.display='block';
+    error.innerHTML='⚠️ Contact form not yet configured. Please email us at <strong>hello@offprice.me</strong> — see setup instructions in the HTML.';
+    return;
+  }
+
+  btn.disabled=true;
+  txt.textContent='Sending...';
+  error.style.display='none';
+
+  try{
+    const data=new FormData(form);
+    const res=await fetch(form.action,{method:'POST',body:data,headers:{Accept:'application/json'}});
+    if(res.ok){
+      form.reset();
+      success.style.display='block';
+      btn.style.display='none';
+      showToast('Message sent! ✓');
+    } else {
+      throw new Error('Server error');
+    }
+  }catch(err){
+    error.style.display='block';
+    btn.disabled=false;
+    txt.textContent='📨 Send Message';
+  }
+}
+
+/* ── HERO NEWSLETTER ── */
+function heroSubscribe(){
+  const e=document.getElementById('heroEmail');
+  if(!e.value||!e.value.includes('@')){alert('Please enter a valid email address.');return}
+  showToast('🎉 Subscribed! We\'ll notify you at launch.');
+  e.value='';
+}
+
+/* ── TOAST ── */
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg||'✓ Done!';
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2800);
+}
+</script>
+</body>
+</html>
