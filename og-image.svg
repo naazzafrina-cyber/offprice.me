@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bggrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#09090F"/>
+      <stop offset="100%" style="stop-color:#111119"/>
+    </linearGradient>
+    <radialGradient id="orb1" cx="15%" cy="20%" r="40%">
+      <stop offset="0%" style="stop-color:rgba(229,62,62,0.35)"/>
+      <stop offset="100%" style="stop-color:rgba(229,62,62,0)"/>
+    </radialGradient>
+    <radialGradient id="orb2" cx="85%" cy="80%" r="40%">
+      <stop offset="0%" style="stop-color:rgba(0,197,197,0.2)"/>
+      <stop offset="100%" style="stop-color:rgba(0,197,197,0)"/>
+    </radialGradient>
+    <linearGradient id="textgrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#E53E3E"/>
+      <stop offset="100%" style="stop-color:#F0C040"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bggrad)"/>
+  <rect width="1200" height="630" fill="url(#orb1)"/>
+  <rect width="1200" height="630" fill="url(#orb2)"/>
+
+  <!-- Border frame -->
+  <rect x="24" y="24" width="1152" height="582" rx="20" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="1.5"/>
+
+  <!-- Top badge -->
+  <rect x="480" y="72" width="240" height="36" rx="18" fill="rgba(229,62,62,0.15)" stroke="rgba(229,62,62,0.3)" stroke-width="1"/>
+  <circle cx="500" cy="90" r="5" fill="#38B27A"/>
+  <text x="600" y="95" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#FC6161" text-anchor="middle" letter-spacing="2">LAUNCHING 2026</text>
+
+  <!-- Main logo -->
+  <text x="600" y="230" font-family="Arial Black,sans-serif" font-size="110" font-weight="900" fill="white" text-anchor="middle">
+    <tspan fill="#E53E3E">Off</tspan><tspan>Price</tspan><tspan fill="#888AA8" font-size="70">.me</tspan>
+  </text>
+
+  <!-- Gradient divider line -->
+  <rect x="200" y="258" width="800" height="3" rx="2" fill="url(#textgrad)" opacity="0.6"/>
+
+  <!-- Tagline -->
+  <text x="600" y="320" font-family="Arial,sans-serif" font-size="28" font-weight="400" fill="#888AA8" text-anchor="middle">GCC's Best Deals Hub</text>
+
+  <!-- Country flags row -->
+  <text x="600" y="400" font-family="Segoe UI Emoji,Apple Color Emoji,sans-serif" font-size="42" text-anchor="middle">🇦🇪  🇸🇦  🇰🇼  🇶🇦  🇧🇭  🇴🇲  🇪🇬</text>
+
+  <!-- Country labels -->
+  <text x="600" y="445" font-family="Arial,sans-serif" font-size="14" fill="#3E3E5A" text-anchor="middle" letter-spacing="3" font-weight="600">UAE · KSA · KUWAIT · QATAR · BAHRAIN · OMAN · EGYPT</text>
+
+  <!-- Bottom stats row -->
+  <rect x="170" y="490" width="180" height="72" rx="12" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <text x="260" y="527" font-family="Arial Black,sans-serif" font-size="28" font-weight="900" fill="#F0C040" text-anchor="middle">300+</text>
+  <text x="260" y="550" font-family="Arial,sans-serif" font-size="12" fill="#888AA8" text-anchor="middle" font-weight="600" letter-spacing="1">BRANDS</text>
+
+  <rect x="510" y="490" width="180" height="72" rx="12" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <text x="600" y="527" font-family="Arial Black,sans-serif" font-size="28" font-weight="900" fill="#F0C040" text-anchor="middle">Daily</text>
+  <text x="600" y="550" font-family="Arial,sans-serif" font-size="12" fill="#888AA8" text-anchor="middle" font-weight="600" letter-spacing="1">DEAL UPDATES</text>
+
+  <rect x="850" y="490" width="180" height="72" rx="12" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <text x="940" y="527" font-family="Arial Black,sans-serif" font-size="28" font-weight="900" fill="#38B27A" text-anchor="middle">Free</text>
+  <text x="940" y="550" font-family="Arial,sans-serif" font-size="12" fill="#888AA8" text-anchor="middle" font-weight="600" letter-spacing="1">ALWAYS</text>
+</svg>
