@@ -67,22 +67,21 @@ window.trackEvent=function(name,params){
 /* ── Styles ──────────────────────────────────────────────────── */
 var CSS=[
   /* Banner */
-  '#op-cb{position:fixed;bottom:0;left:0;right:0;z-index:99999;padding:14px 20px;background:#111119;border-top:1px solid rgba(255,255,255,.1);box-shadow:0 -8px 40px rgba(0,0,0,.65);font-family:Outfit,sans-serif;animation:opIn .4s cubic-bezier(.34,1.56,.64,1)}',
+  '#op-cb{position:fixed;bottom:0;left:0;right:0;z-index:99999;padding:16px 24px;background:#111119;border-top:1px solid rgba(255,255,255,.08);box-shadow:0 -8px 40px rgba(0,0,0,.7);font-family:Outfit,sans-serif;animation:opIn .4s cubic-bezier(.34,1.56,.64,1)}',
   '@keyframes opIn{from{transform:translateY(100%);opacity:0}to{transform:translateY(0);opacity:1}}',
   '@keyframes opOut{from{transform:translateY(0);opacity:1}to{transform:translateY(100%);opacity:0}}',
-  '.op-cb-i{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:16px;flex-wrap:wrap}',
+  '.op-cb-i{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:20px;flex-wrap:wrap}',
+  '.op-cb-ico{font-size:1.8rem;flex-shrink:0;line-height:1}',
   '.op-cb-txt{flex:1;min-width:200px}',
-  '.op-cb-txt strong{font-size:.88rem;color:#F0F0F8;display:block;margin-bottom:3px;font-weight:700}',
-  '.op-cb-txt p{font-size:.76rem;color:#888AA8;line-height:1.55;margin:0}',
-  '.op-cb-txt a{color:#F0C040;text-decoration:none}',
-  '.op-cb-txt a:hover{text-decoration:underline}',
-  '.op-cb-btns{display:flex;gap:8px;flex-wrap:wrap;flex-shrink:0;align-items:center}',
-  '.op-btn-acc{background:#E53E3E;color:#fff;border:none;border-radius:8px;padding:9px 22px;font:700 .83rem Outfit,sans-serif;cursor:pointer;transition:background .2s;white-space:nowrap}',
-  '.op-btn-acc:hover{background:#FC6161}',
-  '.op-btn-mgn{background:rgba(240,192,64,.12);color:#F0C040;border:1px solid rgba(240,192,64,.28);border-radius:8px;padding:9px 16px;font:600 .83rem Outfit,sans-serif;cursor:pointer;transition:all .2s;white-space:nowrap}',
-  '.op-btn-mgn:hover{background:rgba(240,192,64,.22);border-color:rgba(240,192,64,.5)}',
-  '.op-btn-rej{background:transparent;color:#888AA8;border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:9px 14px;font:.78rem Outfit,sans-serif;cursor:pointer;transition:all .2s;white-space:nowrap}',
-  '.op-btn-rej:hover{color:#F0F0F8;border-color:rgba(255,255,255,.25)}',
+  '.op-cb-txt p{font-size:.82rem;color:#C0C0D0;line-height:1.55;margin:0}',
+  '.op-cb-txt a{color:#F0C040;text-decoration:underline;text-underline-offset:2px}',
+  '.op-cb-txt a:hover{color:#FFD760}',
+  '.op-cb-btns{display:flex;flex-direction:column;align-items:center;gap:6px;flex-shrink:0}',
+  '.op-btn-acc{background:linear-gradient(135deg,#E53E3E,#FF6B35);color:#fff;border:none;border-radius:10px;padding:13px 36px;font:700 .92rem Outfit,sans-serif;cursor:pointer;transition:opacity .2s,transform .15s;white-space:nowrap;box-shadow:0 4px 18px rgba(229,62,62,.45);letter-spacing:.3px}',
+  '.op-btn-acc:hover{opacity:.9;transform:translateY(-1px)}',
+  '.op-btn-acc:active{transform:translateY(0)}',
+  '.op-btn-tiny{background:none;border:none;color:#4A4A6A;font:400 .7rem Outfit,sans-serif;cursor:pointer;padding:2px 4px;text-decoration:none;transition:color .2s;white-space:nowrap}',
+  '.op-btn-tiny:hover{color:#888AA8;text-decoration:underline}',
   /* Modal overlay */
   '#op-cm{position:fixed;inset:0;z-index:100000;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.75);backdrop-filter:blur(6px);padding:16px;animation:opFadeIn .25s ease}',
   '@keyframes opFadeIn{from{opacity:0}to{opacity:1}}',
@@ -100,14 +99,14 @@ var CSS=[
   '.op-sw input:checked+.op-sw-sl{background:#E53E3E}',
   '.op-sw input:checked+.op-sw-sl:before{transform:translateX(20px)}',
   '.op-sw input:disabled+.op-sw-sl{background:#38B27A;cursor:not-allowed;opacity:.85}',
-  '.op-cm-footer{display:flex;gap:10px;margin-top:22px}',
-  '.op-btn-save{flex:1;background:#E53E3E;color:#fff;border:none;border-radius:9px;padding:12px;font:700 .85rem Outfit,sans-serif;cursor:pointer;transition:background .2s}',
-  '.op-btn-save:hover{background:#FC6161}',
-  '.op-btn-all2{flex:1;background:rgba(240,192,64,.12);color:#F0C040;border:1px solid rgba(240,192,64,.3);border-radius:9px;padding:12px;font:700 .85rem Outfit,sans-serif;cursor:pointer;transition:all .2s}',
-  '.op-btn-all2:hover{background:rgba(240,192,64,.22)}',
+  '.op-cm-footer{display:flex;flex-direction:column;gap:8px;margin-top:22px}',
+  '.op-btn-all2{width:100%;background:linear-gradient(135deg,#E53E3E,#FF6B35);color:#fff;border:none;border-radius:9px;padding:13px;font:700 .9rem Outfit,sans-serif;cursor:pointer;transition:opacity .2s;box-shadow:0 4px 16px rgba(229,62,62,.35)}',
+  '.op-btn-all2:hover{opacity:.9}',
+  '.op-btn-save{width:100%;background:transparent;color:#4A4A6A;border:none;border-radius:9px;padding:8px;font:400 .74rem Outfit,sans-serif;cursor:pointer;transition:color .2s;text-align:center}',
+  '.op-btn-save:hover{color:#888AA8}',
   '.op-cm-close{position:absolute;top:14px;right:16px;background:transparent;border:none;color:#888AA8;font-size:1.2rem;cursor:pointer;line-height:1;padding:4px 8px;border-radius:6px;transition:color .2s}',
   '.op-cm-close:hover{color:#F0F0F8}',
-  '@media(max-width:520px){.op-cb-i{gap:12px}.op-cb-btns{width:100%}.op-btn-acc,.op-btn-mgn,.op-btn-rej{flex:1;text-align:center}#op-cm-box{padding:22px 18px}.op-cm-footer{flex-direction:column}}'
+  '@media(max-width:520px){.op-cb-i{gap:14px}.op-cb-btns{width:100%}.op-btn-acc{width:100%;padding:13px}#op-cm-box{padding:22px 18px}}'
 ].join('');
 
 function injectCSS(){
@@ -123,21 +122,18 @@ function showBanner(){
   var b=document.createElement('div');b.id='op-cb';
   b.innerHTML=
     '<div class="op-cb-i">'+
+      '<div class="op-cb-ico">🍪</div>'+
       '<div class="op-cb-txt">'+
-        '<strong>🍪 We use cookies on OffPrice.me</strong>'+
-        '<p>We use analytics (Google Analytics, Microsoft Clarity) and advertising (AdSense) cookies '+
-        'to understand how visitors use our site and to keep it free. '+
-        'See our <a href="/privacy.html#cookies">Cookie Policy</a>.</p>'+
+        '<p>We use cookies to improve your experience and for marketing. '+
+        'See our <a href="/privacy.html">Privacy Policy</a>.</p>'+
       '</div>'+
       '<div class="op-cb-btns">'+
-        '<button class="op-btn-acc" id="op-acc-btn">✓ Accept All</button>'+
-        '<button class="op-btn-mgn" id="op-mgn-btn">⚙ Manage</button>'+
-        '<button class="op-btn-rej" id="op-rej-btn">Reject Non-Essential</button>'+
+        '<button class="op-btn-acc" id="op-acc-btn">✓ Accept All Cookies</button>'+
+        '<button class="op-btn-tiny" id="op-mgn-btn">Cookie settings</button>'+
       '</div>'+
     '</div>';
   document.body.appendChild(b);
   document.getElementById('op-acc-btn').addEventListener('click',function(){acceptAll();hideBanner();});
-  document.getElementById('op-rej-btn').addEventListener('click',function(){rejectAll();hideBanner();});
   document.getElementById('op-mgn-btn').addEventListener('click',function(){hideBanner();showModal();});
 }
 
@@ -152,7 +148,7 @@ function hideBanner(){
 function showModal(){
   if(document.getElementById('op-cm'))return;
   injectCSS();
-  var c=getC()||{analytics:false,marketing:false};
+  var c=getC()||{analytics:true,marketing:true};
   var m=document.createElement('div');m.id='op-cm';
   m.innerHTML=
     '<div id="op-cm-box" style="position:relative">'+
@@ -183,8 +179,8 @@ function showModal(){
         '<span class="op-sw-sl"></span></label>'+
       '</div>'+
       '<div class="op-cm-footer">'+
-        '<button class="op-btn-save" id="op-sv-btn">Save Preferences</button>'+
-        '<button class="op-btn-all2" id="op-all-btn">Accept All</button>'+
+        '<button class="op-btn-all2" id="op-all-btn">✓ Accept All Cookies</button>'+
+        '<button class="op-btn-save" id="op-sv-btn">Save my current selection</button>'+
       '</div>'+
     '</div>';
   document.body.appendChild(m);
