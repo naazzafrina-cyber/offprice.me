@@ -90,7 +90,8 @@
   ]
 }
 </script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8758262297449266" crossorigin="anonymous"></script>
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=(), interest-cohort=()">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -507,7 +508,7 @@ html.light .cs-footer{background:#E4E4F4}
 
 <!-- FOOTER -->
 <div class="cs-footer">
-  <p>© 2026 OffPrice.me — All rights reserved · <a href="deals.html">Deals</a> · <a href="privacy.html">Privacy</a> · <a href="#" onclick="toggleSection('contact')">Contact</a> · <a href="admin.html">Admin</a><br>
+  <p>© 2026 OffPrice.me — All rights reserved · <a href="deals.html">Deals</a> · <a href="privacy.html">Privacy</a> · <a href="#" onclick="toggleSection('contact')">Contact</a> · <a href="admin.html">Admin</a> · <a href="#" onclick="opConsent.open();return false">🍪 Cookie Preferences</a><br>
   Deals listed for informational purposes only. Always verify with the retailer before purchasing.</p>
 </div>
 
@@ -627,5 +628,6 @@ function showToast(msg){
   setTimeout(()=>t.classList.remove('show'),2800);
 }
 </script>
+<script src="/consent.js" defer></script>
 </body>
 </html>

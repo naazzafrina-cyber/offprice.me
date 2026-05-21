@@ -87,7 +87,8 @@
   ]
 }
 </script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8758262297449266" crossorigin="anonymous"></script>
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=(), interest-cohort=()">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -509,7 +510,7 @@ html.light .tbtn{border-color:rgba(0,0,0,.15)}
     </div>
     <div class="fbot">
       <p>© 2026 OffPrice.me. Deals listed for informational purposes only. No guarantee of accuracy or availability. Some links are affiliate links — we may earn a commission at no cost to you. Always verify at the retailer before purchasing. OffPrice.me is not affiliated with any listed brand unless stated.</p>
-      <div class="fls"><a href="privacy.html">Privacy</a><a href="privacy.html#terms">Terms</a><a href="privacy.html#affiliate">Disclosure</a></div>
+      <div class="fls"><a href="privacy.html">Privacy</a><a href="privacy.html#terms">Terms</a><a href="privacy.html#affiliate">Disclosure</a><a href="#" onclick="opConsent.open();return false">🍪 Cookie Preferences</a></div>
     </div>
   </div>
 </footer>
@@ -628,17 +629,18 @@ function upCnt(){
   });
   const ge=document.getElementById('c-GCC');if(ge)ge.textContent=AD.filter(d=>d.cc.includes('GCC')).length;
 }
-function fC(c,btn){aC=c;document.querySelectorAll('.ctab').forEach(b=>b.classList.remove('act'));if(btn)btn.classList.add('act');render()}
-function fK(k,btn){aK=k;document.querySelectorAll('.cat').forEach(b=>b.classList.remove('act'));if(btn)btn.classList.add('act');render()}
-let st;function doSearch(){clearTimeout(st);st=setTimeout(()=>{aQ=document.getElementById('si').value.toLowerCase().trim();render()},200)}
+function fC(c,btn){aC=c;window.trackEvent('filter_country',{country:c});document.querySelectorAll('.ctab').forEach(b=>b.classList.remove('act'));if(btn)btn.classList.add('act');render()}
+function fK(k,btn){aK=k;window.trackEvent('filter_category',{category:k});document.querySelectorAll('.cat').forEach(b=>b.classList.remove('act'));if(btn)btn.classList.add('act');render()}
+let st;function doSearch(){clearTimeout(st);st=setTimeout(()=>{aQ=document.getElementById('si').value.toLowerCase().trim();if(aQ)window.trackEvent('search',{search_term:aQ});render()},200)}
 function ss(q){document.getElementById('si').value=q;aQ=q.toLowerCase();render();window.scrollTo({top:document.getElementById('deals').offsetTop-80,behavior:'smooth'})}
 /* MODAL */
 function openModal(id){
   const d=AD.find(x=>x.id===id);if(!d)return;
+  window.trackEvent('deal_click',{deal_id:id,brand:d.brand,category:d.cat,deal_type:d.type,countries:d.cc.join(',')});
   const mi=document.getElementById('mIcon');mi.textContent=d.icon;mi.style.background=d.ibg;mi.style.color=d.ic;
   document.getElementById('mBrand').textContent=d.brand;
   document.getElementById('mTitle').textContent=d.title;
-  const sb=document.getElementById('mSB');sb.href=d.url;sb.textContent='Go to '+d.brand+' →';
+  const sb=document.getElementById('mSB');sb.href=d.url;sb.textContent='Go to '+d.brand+' →';sb.onclick=function(){window.trackEvent('store_visit',{brand:d.brand,deal_id:d.id,url:d.url})};
   if(d.type==='code'&&d.code){
     document.getElementById('mHead').textContent='Your Promo Code';
     document.getElementById('mCB').innerHTML=`<div class="mcb"><div class="mct">${d.code}</div><button class="mcp" id="mcp" onclick="cpCode('${d.code}')">📋 Copy</button></div><div style="font-size:.67rem;color:var(--mut);margin-bottom:8px;text-align:center">⚠️ Unverified — always check at checkout before purchasing.</div>`;
@@ -654,8 +656,8 @@ function openModal(id){
 function closeM(){document.getElementById('cm').classList.remove('open');document.body.style.overflow=''}
 document.getElementById('cm').addEventListener('click',function(e){if(e.target===this)closeM()});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeM()});
-function cpCode(c){navigator.clipboard.writeText(c).then(()=>{const b=document.getElementById('mcp');if(b){b.textContent='✓ Copied!';b.classList.add('ok');setTimeout(()=>{b.textContent='📋 Copy';b.classList.remove('ok')},2000)}const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500)})}
-function subNL(){const e=document.getElementById('nle').value;if(!e||!e.includes('@')){alert('Enter a valid email.');return}alert('Thank you! Deal alerts subscribed. You can unsubscribe anytime via our Privacy Policy.');document.getElementById('nle').value=''}
+function cpCode(c){window.trackEvent('coupon_copy',{code:c});navigator.clipboard.writeText(c).then(()=>{const b=document.getElementById('mcp');if(b){b.textContent='✓ Copied!';b.classList.add('ok');setTimeout(()=>{b.textContent='📋 Copy';b.classList.remove('ok')},2000)}const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500)})}
+function subNL(){const e=document.getElementById('nle').value;if(!e||!e.includes('@')){alert('Enter a valid email.');return}window.trackEvent('newsletter_signup',{source:'deals_page'});alert('Thank you! Deal alerts subscribed. You can unsubscribe anytime via our Privacy Policy.');document.getElementById('nle').value=''}
 /* COUNTDOWN */
 const ev=[{id:'cd1',d:new Date('2026-12-02')},{id:'cd2',d:new Date('2026-11-27')},{id:'cd3',d:new Date('2026-12-15')},{id:'cd4',d:new Date('2027-03-01')}];
 function tick(){const n=new Date();ev.forEach(e=>{const df=e.d-n;if(df<0)return;const da=Math.floor(df/86400000),h=Math.floor(df%86400000/3600000),m=Math.floor(df%3600000/60000),s=Math.floor(df%60000/1000);const el=document.getElementById(e.id);if(!el)return;el.innerHTML=`<div class="cdu"><span class="cdn">${String(da).padStart(2,'0')}</span><div class="cdl">Days</div></div><div class="cdu"><span class="cdn">${String(h).padStart(2,'0')}</span><div class="cdl">Hrs</div></div><div class="cdu"><span class="cdn">${String(m).padStart(2,'0')}</span><div class="cdl">Min</div></div><div class="cdu"><span class="cdn">${String(s).padStart(2,'0')}</span><div class="cdl">Sec</div></div>`})}
@@ -664,4 +666,5 @@ tick();setInterval(tick,1000);render();
 (function(){const t=localStorage.getItem('op-theme');if(t==='light'){document.documentElement.classList.add('light');const b=document.getElementById('themeBtn');if(b)b.textContent='☀️'}})();
 function toggleTheme(){const L=document.documentElement.classList.toggle('light');localStorage.setItem('op-theme',L?'light':'dark');const b=document.getElementById('themeBtn');if(b)b.textContent=L?'☀️':'🌙'}
 </script>
+<script src="/consent.js" defer></script>
 </div></body></html>

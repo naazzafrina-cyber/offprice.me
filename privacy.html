@@ -45,7 +45,8 @@
   "dateModified": "2026-05-20"
 }
 </script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8758262297449266" crossorigin="anonymous"></script>
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=(), interest-cohort=()">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -344,11 +345,12 @@ html.light .tbtn{border-color:rgba(0,0,0,.15)}
 </div><!-- /wrap -->
 
 <footer>
-  <p>© 2026 OffPrice.me · <a href="/">Home</a> · <a href="#disclaimer">Disclaimer</a> · <a href="#terms">Terms</a> · <a href="#affiliate">Affiliate</a> · <a href="#privacy">Privacy</a> · <a href="#cookies">Cookies</a> · <a href="#contact">Contact</a></p>
+  <p>© 2026 OffPrice.me · <a href="/">Home</a> · <a href="#disclaimer">Disclaimer</a> · <a href="#terms">Terms</a> · <a href="#affiliate">Affiliate</a> · <a href="#privacy">Privacy</a> · <a href="#cookies">Cookies</a> · <a href="#contact">Contact</a> · <a href="#" onclick="opConsent.open();return false">🍪 Cookie Preferences</a></p>
 </footer>
 <script>
 (function(){const t=localStorage.getItem('op-theme');if(t==='light'){document.documentElement.classList.add('light');const b=document.getElementById('themeBtn');if(b)b.textContent='☀️'}})();
 function toggleTheme(){const L=document.documentElement.classList.toggle('light');localStorage.setItem('op-theme',L?'light':'dark');const b=document.getElementById('themeBtn');if(b)b.textContent=L?'☀️':'🌙'}
 </script>
+<script src="/consent.js" defer></script>
 </body>
 </html>
